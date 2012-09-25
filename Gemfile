@@ -49,5 +49,10 @@ gem 'factory_girl_rails'
 gem 'rspec-rails' 
 gem 'devise' 
 gem 'ruby-debug19' 
-gem 'ruby-debug-base19x' 
-gem 'ruby-debug-ide' #'0.4.6' 
+
+# TODO this cause compiling errors on OS X. 
+# Please install them locally if you really need it.
+# Thanks!
+
+#gem 'ruby-debug-base19x' 
+#gem 'ruby-debug-ide' #'0.4.6' 
