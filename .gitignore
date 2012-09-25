@@ -20,3 +20,8 @@ coverage/*
 doc/coverage/*
 *DS_Store
 .rspec
+*.swp
+*.temp
+*.rbc
+*.sassc
+.sass-cache
