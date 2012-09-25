@@ -1,3 +1,3 @@
 # Maccha
 ## Intro
-We are Maccha. We love teams.
+We are Maccha. We love teas.
