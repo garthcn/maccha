@@ -14,16 +14,16 @@ describe Item do
       :description => "android is better",
       :seller_id => "1"
     }
-    #@item = Factory(:item)
   end
 
   describe "item attributes" do
-    @item = Item.create(@attr)
-    subject { @item }
+    it "should have correct attributes" do
+      @item = Item.create(@attr)
 
-    it.name.should == 'iPhone'
-    it.category.should == 'Electronics'
-    it.location.should == 'Pittsburgh'
+      @item.name.should == 'iPhone 7'
+      @item.category.should == 'Electronics'
+      @item.location.should == 'Pittsburgh'
+    end
   end
 
   describe "item CRUD" do
@@ -36,7 +36,11 @@ describe Item do
 
     it "should update an item attribute" do
       @item = Item.create(@attr)
-      @attr['name'] = 'iPhone 3G'
+      #@new_attr = @attr
+      @attr[:name] = 'iPhone 3G'
+      #p @attr
+      #@new_attr[:name] = 'iPhone 3G'
+      #p @new_attr
       @item.update_attributes(@attr)
       @item.name.should == 'iPhone 3G'
     end
