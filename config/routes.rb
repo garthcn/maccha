@@ -1,13 +1,10 @@
 BestBay::Application.routes.draw do
-  root :to => 'items#index'
-
-  resources :items
-
   devise_for :users, :path => 'accounts'
 
-  root :to => "users#index"
-
+  resources :items
   resources :users
+
+  root :to => "home#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
