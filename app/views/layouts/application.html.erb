@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Maccha Maccha Maccha</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Maccha Maccha Maccha</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <header class="row-fluid">
+      <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
+            <span class="brand"><a href="/">Maccha</a></span>
+            <ul class="nav">
+              <li><a href="/">Home</a></li>
+              <li><a href="/users">Users</a></li>
+              <li><a href="/items">Items</a></li>
+            </ul>
+            <%= render 'layouts/header' %>  
+          </div>
+        </div>
+      </div>
+    </header>
 
-<header class="row-fluid">
-  <div class="logo span1">  ADD LOGO </div>
-  <div class="searchbar span6"> SEARCHBAR </div>
-  <div class="mycha span4"> MYCHA & SIGNUP </div>
-</header>
+    <div class="container">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
 
-<div>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <%= yield %>
-</div>
+    <footer> </footer>
 
-<footer> </footer>
-
-</body>
+  </body>
 </html>
