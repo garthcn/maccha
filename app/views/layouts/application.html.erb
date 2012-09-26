@@ -22,13 +22,17 @@
       </div>
     </header>
 
-    <div class="container">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%= yield %>
+    <div id="content">
+      <div class="container">
+          <% if notice %>
+            <div class="alert alert-info"><%= notice %></div>
+          <% end %>
+          <% if alert %>
+            <div class="alert"><%= alert %></div>
+          <% end %>
+        <%= yield %>
+      </div>
     </div>
-
     <footer> </footer>
-
   </body>
 </html>
