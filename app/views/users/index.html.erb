@@ -1,0 +1,15 @@
+<% @users.each do |user| %>
+ <tr>
+   <td><%= user.id %></td>
+   <td><%= user.email %></td>
+
+   <td><%= link_to 'Show', user_path(user) %></td>
+   <td><%= link_to 'Edit', edit_user_path(user) %></td>
+   <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+ </tr>
+<% end %>
+</table>
+
+<td><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></td>
+
+<br />
