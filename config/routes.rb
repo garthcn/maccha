@@ -1,4 +1,6 @@
 BestBay::Application.routes.draw do
+  root :to => 'items#index'
+
   resources :items
 
   devise_for :users, :path => 'accounts'

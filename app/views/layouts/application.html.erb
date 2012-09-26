@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BestBay</title>
+  <title>Maccha Maccha Maccha</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<%= yield %>
+<header class="row-fluid">
+  <div class="logo span1">  ADD LOGO </div>
+  <div class="searchbar span6"> SEARCHBAR </div>
+  <div class="mycha span4"> MYCHA & SIGNUP </div>
+</header>
+
+<div>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <%= yield %>
+</div>
+
+<footer> </footer>
 
 </body>
 </html>
