@@ -18,6 +18,7 @@ describe Item do
 
   describe "item attributes" do
     it "should have correct attributes" do
+
       @item = Item.create(@attr)
 
       @item.name.should == 'iPhone 7'
