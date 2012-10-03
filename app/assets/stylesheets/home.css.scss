@@ -3,8 +3,16 @@
 }
 
 .brand {
+  cursor: default;
+  font-family: 'Polo Brush', cursive;
   a {
     text-decoration: none;
     color: #5C585A;
   }
+}
+
+
+@font-face {
+	font-family: brush;
+	src: url('cool_font.ttf');
 }

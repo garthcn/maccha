@@ -32,13 +32,15 @@
   <div class="control-group">
     <%= f.label :start_time, class: 'control-label' %>
     <div class='controls'>
-      <%= f.datetime_select :start_time %>
+      <input type="text" value="<%= Date.today.to_s %>" class="datepicker">
+      <input type="text" class="timepicker">
     </div>
   </div>
   <div class="control-group">
     <%= f.label :end_time, class: 'control-label' %>
     <div class='controls'>
-      <%= f.datetime_select :end_time %>
+      <input type="text" value="<%= Date.tomorrow.to_s %>" class="datepicker">
+      <input type="text" class="timepicker">
     </div>
   </div>
   <div class="control-group">
