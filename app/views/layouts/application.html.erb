@@ -7,32 +7,57 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <header class="row-fluid">
-      <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-          <div class="container">
-            <span class="brand"><a href="/">Maccha</a></span>
-            <ul class="nav">
-              <li><a href="/">Home</a></li>
-              <li><a href="/items">Items</a></li>
-            </ul>
-            <%= render 'layouts/header' %>  
+  <div class="wrapper">
+    <header class="main-hd navbar-fixed-top">
+      <div class="header-nav clearfix">
+        <div class="container">
+          <h1 class="brand">Maccha</h1>
+          <div class="searchform">
+            <form id="item-search" name="item-search" action="<%= search_path %>" method="get" class="form-inline">
+              <input type="text" id="search" name="keywords" class="searchbar" placeholder="Search...">
+              <input type="submit" id="search-s" value="Search" class="btn">
+            </form>
+          </div>
+          <div class="user-actions">
+            <% if user_signed_in? %>
+              <div class="user-menu">
+                <a href="#" class="dropdown-toggle action" data-toggle="dropdown">MyCha <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a tabindex="-1" href="#">Profile</a></li>
+                  <li><a tabindex="-1" href="#">My Items</a></li>
+                  <li><a tabindex="-1" href="#">Watchlist</a></li>
+                  <li><a tabindex="-1" href="#">Sell an Item</a></li>
+                </ul>
+              </div>
+              <%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => 'action' %>
+            <% else %>
+              <%= link_to "Sign in", new_user_session_path, :class => 'action' %>
+              <%= link_to "Sign up", new_user_registration_path, :class => 'action' %>
+            <% end %>
           </div>
         </div>
       </div>
     </header>
 
-    <div id="content">
-      <div class="container">
-          <% if notice %>
-            <div class="alert alert-info"><%= notice %></div>
-          <% end %>
-          <% if alert %>
-            <div class="alert"><%= alert %></div>
-          <% end %>
-        <%= yield %>
+    <div class="main-bd">
+      <div class="main-container">
+      <!-- body -->
+      <% if notice %>
+        <div class="alert alert-info"><%= notice %></div>
+      <% end %>
+      <% if alert %>
+        <div class="alert"><%= alert %></div>
+      <% end %>
+      <%= yield %>
       </div>
     </div>
-    <footer> </footer>
+
+    <footer class="main-ft clearfix">
+      <div class="container">
+      <div class="copyright pull-left">&copy;2012 Maccha.</div>
+      <div class="pull-right">The team members: Seetha, Ying, Yuki, Jiasi, and Yang.</div>
+      </div>
+    </footer>
+  </div>
   </body>
 </html>

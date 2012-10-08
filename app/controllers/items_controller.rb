@@ -21,6 +21,14 @@ class ItemsController < ApplicationController
     end
   end
 
+  def search
+    @items = Item.search(params[:keywords])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @items }
+    end
+  end
+
   # GET /items/new
   # GET /items/new.json
   def new

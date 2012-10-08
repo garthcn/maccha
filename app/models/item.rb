@@ -16,4 +16,15 @@ class Item < ActiveRecord::Base
   validates :description, 
     :presence => true,
     :length => { :maximum => 1000 }
+
+  def self.search(search)
+    search_condition = "%" + search + "%"
+    find(:all, :conditions => ['name LIKE ? OR description LIKE ? ' +
+         'OR category LIKE ? OR condition LIKE ? OR location LIKE ? ',
+         search_condition, search_condition, search_condition,
+         search_condition, search_condition])
+  end
+  def self.adv_search(search)
+    # TODO: advanced search
+  end
 end
