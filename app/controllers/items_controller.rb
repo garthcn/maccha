@@ -48,6 +48,12 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
+    p params
+    #start_datetime = params[:item][:start_date] + ' ' +  params[:item][:start_time]
+    #params[:item][:start_time] = DateTime.parse(start_datetime)
+    #end_datetime = params[:item][:end_date] + ' ' + params[:item][:end_time]
+    #params[:item][:end_time] = DateTime.parse(end_datetime)
+
     @item = Item.new(params[:item])
 
     respond_to do |format|
