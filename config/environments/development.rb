@@ -52,4 +52,6 @@ BestBay::Application.configure do
       :user_name => "liyingCmu@gmail.com",
       :password => "0814Cmu$"
   }
+
+  Paperclip.options[:command_path] = "/usr/local/bin/"
 end
