@@ -52,62 +52,13 @@
       </div>
     </div>
     <div class="description">
+      Description goes here...
     </div>
   </div>
 </div>
 
 
-<div class="row" style="margin-top: 100px">
-  <div class="span4">
-    <%= image_tag @item.picture.url(:small), :class => 'img-polaroid' unless @item.picture.url.blank? %>
-  </div>
-  <div class="span8">
-    <p>
-      <b>Name:</b>
-      <%= @item.name %>
-    </p>
-
-    <p>
-      <b>Category:</b>
-      <%= @item.category %>
-    </p>
-
-    <p>
-      <b>Price:</b>
-      <%= @item.price %>
-    </p>
-
-    <p>
-      <b>Start time:</b>
-      <%= @item.start_time %>
-    </p>
-
-    <p>
-      <b>End time:</b>
-      <%= @item.end_time %>
-    </p>
-
-    <p>
-      <b>Condition:</b>
-      <%= @item.condition %>
-    </p>
-
-    <p>
-      <b>Location:</b>
-      <%= @item.location %>
-    </p>
-
-    <p>
-      <b>Description:</b>
-      <%= @item.description %>
-    </p>
-
-    <p>
-      <b>Seller:</b>
-      <%= @item.seller_id %>
-    </p>
-  </div>
-</div>
-
+<!-- 
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>
+-->

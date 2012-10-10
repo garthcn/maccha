@@ -1,20 +1,21 @@
-<div class="grid">
-  <ul class="clearfix">
-    <% @items.each do |item| %>
-      <div class="item">
-        <li>
+<div class="list-container container">
+  <div class="items box">
+    <h2><%= yield :htitle %></h2>
+    <ul class="clearfix">
+      <% @items.each do |item| %>
+        <li class="item-grid">
+        <a href="<%= url_for item %>" title="View item">
           <div class="item-img">
-            <a href="<%= url_for item %>">
-              <%= image_tag item.picture.url(:small) %>
-            </a>
+            <%= image_tag item.picture.url(:small) %>
           </div>
           <div class="item-info">
-            <div class="name">Name</div>
-            <div class="price">10.0</div>
+            <p class="name"><%= item.name %></p>
+            <p class="price">$ <%= item.price %></p>
           </div>
+        </a>
         </li>
-      </div>
-    <% end %>
-  </ul>
+      <% end %>
+    </ul>
+  </div>
 </div>
 

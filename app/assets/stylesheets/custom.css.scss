@@ -94,8 +94,8 @@ a:hover {
   padding-top: 1px;
 }
 .main-bd .main-container {
-  margin: 40px auto 50px;
-  background-color: white;
+  margin: 90px auto 50px;
+  // background-color: white;
   padding: 10px;
   border-radius: 5px;
 }
@@ -378,8 +378,8 @@ a:hover {
   padding: 3px 6px;
   background-color: rgba(255, 255, 255, 0.8);
   color: #740000;
-  border-right: 1px solid #AAA;
-  border-bottom: 1px solid #AAA;
+  border-right: 1px solid #DDD;
+  border-bottom: 1px solid #DDD;
   font-weight: 700;
   font-size: 12px;
 }
@@ -477,5 +477,10 @@ a:hover {
 }
 .item-container .otherinfo .pull-right {
   width: 420px;
+}
+.item-container .description {
+  margin-top: 20px;
+  padding: 20px;
+  border-top: 1px solid #DDD;
 }
 
