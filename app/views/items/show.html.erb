@@ -1,7 +1,63 @@
-<p id="notice"><%= notice %></p>
+<div class="item-container">
+  <div class="item-detail box">
+    <div class="basic clearfix">
+      <div class="item-image">
+        <div class="item-imgwrap">
+          <%= image_tag @item.picture.url(:small), :class => 'img-polaroid' unless @item.picture.url.blank? %>
+        </div>
+      </div>
+      <div class="item-info">
+        <h2><%= @item.name %></h2>
+        <div class="countdown"><strong>Bid ends at</strong>: Dec 24, 2012 23:59:59</div>
+        <div class="price">
+          <p class="curr">
+            <span class="leftcol">Current Price: </span>
+            <em class="rightcol">$ <%= @item.price %></em>
+          </p>
+          <p class="bid form-inline">
+            <span class="leftcol"></span>
+            <input type="text" class="input-small">
+            <a href="#" id="placebid" class="btn" title="">Place Bid</a>
+          </p>
+          <p class="curr buyitnow">
+            <span class="leftcol">Buy It Now Price: </span>
+            <em>$ 123.45</em>
+          </p>
+          <p class="curr buyitnow">
+            <span class="leftcol"></span>
+            <a href="#" id="buyitnow" class="btn" title="">Buy It Now!</a>
+          </p>
+        </div>
+        <div class="otherinfo">
+          <p class="clearfix">
+            <span class="pull-left">Condition:</span>
+            <span class="pull-right"><%= @item.condition %></span>
+          </p>
+          <p class="clearfix">
+            <span class="pull-left">Location:</span>
+            <span class="pull-right"><%= @item.location %></span>
+          </p>
+          <p class="clearfix">
+            <span class="pull-left">Category:</span>
+            <span class="pull-right"><%= @item.category %> blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah</span>
+          </p>
+          <p class="clearfix">
+            <span class="pull-left">Payment:</span>
+            <span class="pull-right"><img src="http://pics.ebaystatic.com/aw/pics/logos/logoPayPal_51x14.gif" alt="PayPal"></span>
+          </p>
+        </div>
+        <div class="seller">
+          Seller info goes here...
+        </div>
+      </div>
+    </div>
+    <div class="description">
+    </div>
+  </div>
+</div>
 
 
-<div class="row">
+<div class="row" style="margin-top: 100px">
   <div class="span4">
     <%= image_tag @item.picture.url(:small), :class => 'img-polaroid' unless @item.picture.url.blank? %>
   </div>
