@@ -10,6 +10,7 @@
       </div>
       <div class="user-actions">
         <% if user_signed_in? %>
+          <a class="action" href="<%= new_item_path %>">SELL</a>
           <div class="user-menu">
             <a href="#" class="dropdown-toggle action" data-toggle="dropdown">MyCha <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -17,9 +18,9 @@
               <li><a tabindex="-1" href="#">My Items</a></li>
               <li><a tabindex="-1" href="#">Watchlist</a></li>
               <li><a tabindex="-1" href="<%= new_item_path %>">Sell an Item</a></li>
+              <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
             </ul>
           </div>
-          <%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => 'action' %>
         <% else %>
           <%= link_to "Sign in", new_user_session_path, :class => 'action' %>
           <%= link_to "Sign up", new_user_registration_path, :class => 'action' %>
