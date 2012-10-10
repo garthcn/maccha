@@ -42,6 +42,9 @@ a:hover {
   margin: 0;
   color: #B6DF66;
 }
+.main-hd .brand a {
+  color: #B6DF66;
+}
 .main-hd .searchform {
   width: 40%;
   float: left;
@@ -94,7 +97,7 @@ a:hover {
   margin: 90px auto 50px;
 }
 .main-bd .featured {
-  margin: 90px 0 50px;
+  // margin: 90px 0 50px;
 }
 .main-bd .info {
   color: #36291C;
@@ -231,8 +234,10 @@ a:hover {
   padding: 2px;
 }
 .slide .itemlist .item-img img {
-  width: 270px;
-  height: 170px;
+  // width: 270px;
+  // height: 170px;
+  width: 256px;
+  height: 256px;
 }
 .slide .itemlist .item-info {
   margin: 0 5px;
@@ -255,8 +260,8 @@ a:hover {
   padding: 3px 6px;
   background-color: rgba(255, 255, 255, 0.8);
   color: #740000;
-  border-right: 1px solid #AAA;
-  border-bottom: 1px solid #AAA;
+  border-right: 1px solid #EEE;
+  border-bottom: 1px solid #EEE;
   font-weight: 700;
   font-size: 14px;
 }
@@ -298,7 +303,7 @@ a:hover {
   font-style: italic;
 }
 .list-container {
-  margin: 90px auto 50px;
+  // margin: 90px auto 50px;
 }
 .list-container .items {
   padding: 20px;
@@ -344,8 +349,10 @@ a:hover {
   padding: 2px;
 }
 .list-container .items .item-img img {
+  // width: 196px;
+  // height: 130px;
   width: 196px;
-  height: 130px;
+  height: 196px;
 }
 .list-container .items .item-info {
   margin: 0 5px;

@@ -11,7 +11,7 @@
     <header class="main-hd navbar-fixed-top">
       <div class="header-nav clearfix">
         <div class="container">
-          <h1 class="brand">Maccha</h1>
+          <h1 class="brand"><a href="<%= root_path %>" title="Maccha">Maccha</a></h1>
           <div class="searchform">
             <form id="item-search" name="item-search" action="<%= search_path %>" method="get" class="form-inline">
               <input type="text" id="search" name="keywords" class="searchbar" placeholder="Search...">
@@ -40,7 +40,7 @@
     </header>
 
     <div class="main-bd">
-      <div class="main-container">
+      <div class="main-container container">
       <!-- body -->
       <% if notice %>
         <div class="alert alert-info"><%= notice %></div>
