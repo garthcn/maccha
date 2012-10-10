@@ -8,37 +8,7 @@
   </head>
   <body>
   <div class="wrapper">
-    <header class="main-hd navbar-fixed-top">
-      <div class="header-nav clearfix">
-        <div class="container">
-          <h1 class="brand"><a href="<%= root_path %>" title="Maccha">Maccha</a></h1>
-          <div class="searchform">
-            <form id="item-search" name="item-search" action="<%= search_path %>" method="get" class="form-inline">
-              <input type="text" id="search" name="keywords" class="searchbar" placeholder="Search...">
-              <input type="submit" id="search-s" value="Search" class="btn">
-            </form>
-          </div>
-          <div class="user-actions">
-            <% if user_signed_in? %>
-              <div class="user-menu">
-                <a href="#" class="dropdown-toggle action" data-toggle="dropdown">MyCha <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a tabindex="-1" href="#">Profile</a></li>
-                  <li><a tabindex="-1" href="#">My Items</a></li>
-                  <li><a tabindex="-1" href="#">Watchlist</a></li>
-                  <li><a tabindex="-1" href="#">Sell an Item</a></li>
-                </ul>
-              </div>
-              <%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => 'action' %>
-            <% else %>
-              <%= link_to "Sign in", new_user_session_path, :class => 'action' %>
-              <%= link_to "Sign up", new_user_registration_path, :class => 'action' %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </header>
-
+    <%= render 'layouts/header' %>
     <div class="main-bd">
       <div class="main-container container">
       <!-- body -->

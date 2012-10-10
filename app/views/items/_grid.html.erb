@@ -1,0 +1,20 @@
+<div class="grid">
+  <ul class="clearfix">
+    <% @items.each do |item| %>
+      <div class="item">
+        <li>
+          <div class="item-img">
+            <a href="<%= url_for item %>">
+              <%= image_tag item.picture.url(:small) %>
+            </a>
+          </div>
+          <div class="item-info">
+            <div class="name">Name</div>
+            <div class="price">10.0</div>
+          </div>
+        </li>
+      </div>
+    <% end %>
+  </ul>
+</div>
+
