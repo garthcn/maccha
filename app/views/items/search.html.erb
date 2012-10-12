@@ -1,2 +1,8 @@
-<% provide :htitle, "Search Results for \"#{params[:keywords]}\"" %>
+<% len = @items.length %>
+<% showing = '' %>
+<% if len > 0 %>
+  <% showing = "(Showing 1-50)" %>
+<% else %>
+<% end %>
+<% provide :htitle, "#{len} results found for \"#{params[:keywords]}\" #{showing}" %>
 <%= render 'grid' %>

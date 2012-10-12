@@ -27,7 +27,10 @@ class ItemsController < ApplicationController
   def search
     # TODO: page
     if not params[:keywords].strip.empty?
-      @items = Item.search(params[:keywords])
+      @page = params[:page] || 1
+      @items_per_page = params[:num] || 50
+      @keywords = params[:keywords]
+      @items = Item.search(@keywords, @page, @items_per_page)
       respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @items }
