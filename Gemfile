@@ -1,12 +1,14 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.7'
-gem 'devise'
 gem 'bootstrap-sass'
 gem 'paperclip'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+#suggested gems by Todd
+gem 'factory_girl_rails' 
+gem 'rspec-rails' 
+gem 'devise' 
+gem 'ruby-debug19' 
 
 group :development, :test do
    gem 'sqlite3'
@@ -16,8 +18,6 @@ group :production do
   # gem 'pg'
 end
 
-
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -26,7 +26,6 @@ group :assets do
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
-
   gem 'uglifier', '>= 1.0.3'
 end
 
@@ -47,11 +46,6 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
-#suggested gems by Todd
-gem 'factory_girl_rails' 
-gem 'rspec-rails' 
-gem 'devise' 
-gem 'ruby-debug19' 
 
 # TODO this cause compiling errors on OS X. 
 # Please install them locally if you really need it.

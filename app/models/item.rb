@@ -16,6 +16,9 @@ class Item < ActiveRecord::Base
   validates :description, 
     :presence => true,
     :length => { :maximum => 1000 }
+  validates :category, 
+    :presence => true,
+    :length => { :maximum => 100 }
 
   def self.search(search)
     search_condition = "%" + search + "%"

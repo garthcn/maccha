@@ -2,15 +2,15 @@
   <div class="header-nav clearfix">
     <div class="container">
       <h1 class="brand"><a href="<%= root_path %>" title="Maccha">Maccha</a></h1>
-      <div class="searchform">
+      <div class="search-form">
         <form id="item-search" name="item-search" action="<%= search_path %>" method="get" class="form-inline">
           <input type="text" id="search" name="keywords" class="searchbar" placeholder="Search...">
           <input type="submit" id="search-s" value="Search" class="btn">
         </form>
       </div>
       <div class="user-actions">
+        <a class="action" href="<%= new_item_path %>">SELL</a>
         <% if user_signed_in? %>
-          <a class="action" href="<%= new_item_path %>">SELL</a>
           <div class="user-menu">
             <a href="#" class="dropdown-toggle action" data-toggle="dropdown">MyCha <span class="caret"></span></a>
             <ul class="dropdown-menu">

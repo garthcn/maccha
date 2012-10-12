@@ -27,6 +27,25 @@ describe Item do
     end
   end
 
+  describe "item info validation" do
+    it "should not create if price is not valid" do
+      @attr[:price] = -3
+      item = Item.new(@attr)
+      item.save.should == false
+    end
+
+    it "should not create if name is missing" do
+      @attr[:name] = ''
+      item = Item.new(@attr)
+      item.save.should == false
+    end
+
+    it "should not create if category is missing" do
+      @attr[:category] = ''
+      item = Item.new(@attr)
+      item.save.should == false
+    end
+  end
   describe "item CRUD" do
     it "should create an item" do
       Item.create(@attr)
