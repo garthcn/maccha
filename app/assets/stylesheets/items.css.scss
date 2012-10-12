@@ -31,3 +31,28 @@ div.grid {
     }
   }
 }
+
+.form-container {
+}
+.form-container textarea {
+  resize: none;
+  width: 300px;
+}
+.form-container input[type="text"] {
+  width: 300px;
+}
+.form-container .item-form {
+  padding: 20px 30px;
+}
+.form-container h2 {
+  margin: 0 0 15px;
+  font-size: 22px;
+  color: #444;
+}
+.form-container .item-form label {
+  width: 105px;
+}
+.form-container .item-form .controls {
+  margin-left: 125px;
+}
+

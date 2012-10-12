@@ -1,74 +1,118 @@
-<%= form_for(@item, html: {class: 'form-horizontal'}) do |f| %>
-  <% if @item.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+<div class="form-container">
+  <div class="item-form box">
+    <%= form_for(@item, html: {class: 'form-horizontal'}) do |f| %>
+      <legend><%= yield :ftitle %></legend>
+      <% if @item.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
 
-      <ul>
-      <% @item.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+          <ul>
+          <% @item.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="control-group">
-    <%= f.label :name, class: 'control-label' %>
-    <div class='controls'>
-      <%= f.text_field :name %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :category, class: 'control-label' %>
-    <div class='controls'>
-      <%= f.text_field :category %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :price, class: 'control-label'%>
-    <div class='controls'>
-      <%= f.text_field :price %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :start_time, class: 'control-label' %>
-    <div class='controls'>
-      <%= f.text_field :start_time, :value => Date.today.to_s, :class => "datepicker" %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :end_time, class: 'control-label' %>
-    <div class='controls'>
-      <%= f.text_field :end_time, :value => Date.tomorrow.to_s, :class => "datepicker" %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :condition, class: 'control-label' %>
-    <div class='controls'>
-      <%= f.text_field :condition %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :location, class: 'control-label' %>
-    <div class='controls'>
-      <%= f.text_field :location %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :description, class: 'control-label' %>
-    <div class='controls'>
-      <%= f.text_area :description, rows: '5' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :picture, class: 'control-label' %>
-    <div class='controls'>
-      <%= f.file_field :picture %>
-    </div>
-  </div>
+      <div class="control-group">
+        <%= f.label :name, class: 'control-label' %>
+        <div class='controls'>
+          <%= f.text_field :name %>
+          <span class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :price, class: 'control-label'%>
+        <div class='controls'>
+          <%= f.text_field :price %>
+          <span class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :start_time, class: 'control-label' %>
+        <div class='controls'>
+          <%= f.text_field :start_time, :value => Date.today.to_s, :class => "datepicker" %>
+          <span class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :end_time, class: 'control-label' %>
+        <div class='controls'>
+          <%= f.text_field :end_time, :value => Date.tomorrow.to_s, :class => "datepicker" %>
+          <span class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :category, class: 'control-label' %>
+        <div class='controls'>
+          <%= f.text_field :category %>
+          <span class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :condition, class: 'control-label' %>
+        <div class='controls'>
+          <%= f.text_field :condition %>
+          <span class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :location, class: 'control-label' %>
+        <div class='controls'>
+          <%= f.text_field :location %>
+          <span class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :description, class: 'control-label' %>
+        <div class='controls'>
+          <%= f.text_area :description, rows: '5' %>
+          <span class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :picture, class: 'control-label' %>
+        <div class='controls'>
+          <a id="btn-upload" class="btn" href="#">Choose File</a>
+          <span id="filename" class="help-inline">No file chosen</span>
+          <div style="display: none"><%= f.file_field :picture %></div>
+          <span class="help-inline"></span>
+        </div>
+      </div>
 
-  <div class="control-group">
-    <div class='controls'>
-      <%= f.submit class: 'btn'%>
-    </div>
+      <div class="control-group">
+        <div class='controls'>
+          <%= f.submit (yield :btn_text), class: 'btn'%>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
+<script>
+(function(host, $) {
+    var $upload = $('#item_picture'),
+        $btn = $('#btn-upload'),
+        $filename = $('#filename');
+    $btn.click(function(e) {
+        $upload.click();
+        e.preventDefault();
+    });
+    $upload.change(function(e) {
+        var val = $(this).val(), n;
+        if (val.length) {
+            n = val.lastIndexOf('\\');
+            n = (n < 0) ? 0 : n;
+            if (n < 0) {
+                n = 0;
+            } else {
+                if (val[n] === '\\') {
+                    n++;
+                }
+            }
+        } else {
+            val = 'No file chosen';
+        }
+        $filename.text(val.substring(n));
+    });
+}(window, jQuery));
+</script>
