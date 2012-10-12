@@ -12,7 +12,7 @@
         <div class="price">
           <p class="curr">
             <span class="leftcol">Current Price: </span>
-            <em class="rightcol">$ <%= @item.price %></em>
+            <em class="rightcol">$ <%= sprintf("%.2f", @item.price) %></em>
           </p>
           <p class="bid form-inline">
             <span class="leftcol"></span>
@@ -39,7 +39,7 @@
           </p>
           <p class="clearfix">
             <span class="pull-left">Category:</span>
-            <span class="pull-right"><%= @item.category %> blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah</span>
+            <span class="pull-right"><%= @item.category %></span>
           </p>
           <p class="clearfix">
             <span class="pull-left">Payment:</span>
@@ -54,11 +54,13 @@
     <div class="description">
       Description goes here...
     </div>
+    <div class="item-actions">
+      <%= link_to 'Edit', edit_item_path(@item), :class => 'btn' %>
+      <%= link_to 'Delete', item_path(@item), :confirm => "Are you sure?", :method => :delete, :class => 'btn btn-danger' %>
+    </div>
   </div>
 </div>
 
 
 <!-- 
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
 -->

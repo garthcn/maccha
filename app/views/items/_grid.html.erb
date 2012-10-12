@@ -1,21 +1,26 @@
 <div class="list-container container">
   <div class="items box">
     <h2><%= yield :htitle %></h2>
-    <ul class="clearfix">
-      <% @items.each do |item| %>
-        <li class="item-grid">
-        <a href="<%= url_for item %>" title="View item">
-          <div class="item-img">
-            <%= image_tag item.picture.url(:small) %>
-          </div>
-          <div class="item-info">
-            <p class="name"><%= item.name %></p>
-            <p class="price">$ <%= item.price %></p>
-          </div>
-        </a>
-        </li>
-      <% end %>
-    </ul>
+    <% if @items.empty? %>
+      <h3>Oops...</h3>
+      <p>I tried so hard but I haven't found anything.</p>
+    <% else %>
+      <ul class="clearfix">
+        <% @items.each do |item| %>
+          <li class="item-grid">
+          <a href="<%= url_for item %>" title="View item">
+            <div class="item-img">
+              <%= image_tag item.picture.url(:small) %>
+            </div>
+            <div class="item-info">
+              <p class="name"><%= item.name %></p>
+              <p class="price">$ <%= sprintf("%.2f", item.price) %></p>
+            </div>
+          </a>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
 </div>
 

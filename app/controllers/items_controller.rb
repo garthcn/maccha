@@ -25,10 +25,15 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.search(params[:keywords])
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @items }
+    # TODO: page
+    if not params[:keywords].strip.empty?
+      @items = Item.search(params[:keywords])
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @items }
+      end
+    else
+      redirect_to request.referer || :root
     end
   end
 
