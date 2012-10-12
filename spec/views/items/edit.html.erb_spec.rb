@@ -24,7 +24,8 @@ describe "items/edit" do
       assert_select "input#item_condition", :name => "item[condition]"
       assert_select "input#item_location", :name => "item[location]"
       assert_select "textarea#item_description", :name => "item[description]"
-      assert_select "input#item_seller_id", :name => "item[seller_id]"
+      # seller_id will be generated automatically
+      #assert_select "input#item_seller_id", :name => "item[seller_id]"
     end
   end
 end

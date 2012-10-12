@@ -37,11 +37,7 @@ describe Item do
 
     it "should update an item attribute" do
       @item = Item.create(@attr)
-      #@new_attr = @attr
       @attr[:name] = 'iPhone 3G'
-      #p @attr
-      #@new_attr[:name] = 'iPhone 3G'
-      #p @new_attr
       @item.update_attributes(@attr)
       @item.name.should == 'iPhone 3G'
     end
@@ -54,5 +50,3 @@ describe Item do
   end
 
 end
-
-

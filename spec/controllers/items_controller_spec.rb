@@ -6,7 +6,17 @@ describe ItemsController do
   # Item. As you add validations to Item, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {
+    :category => 'phone',
+    :condition => 'like new',
+    :description => 'this is a great phone',
+    :location => 'Pittsburgh',
+    :name => 'iPhone 10',
+    :price => '19.99',
+    :start_time => Date.today,
+    :end_time => Date.tomorrow,
+    :seller_id => 1
+    }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -18,9 +28,9 @@ describe ItemsController do
 
   describe "GET index" do
     it "assigns all items as @items" do
-      #item = Item.create! valid_attributes
-      #get :index, {}, valid_session
-      #assigns(:items).should eq([item])
+      item = Item.create! valid_attributes
+      get :index, {}, valid_session
+      assigns(:items).should eq([item])
     end
   end
 
