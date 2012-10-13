@@ -1,8 +1,10 @@
-<% len = @items.length %>
 <% showing = '' %>
-<% if len > 0 %>
-  <% showing = "(Showing 1-50)" %>
+<% pstart = (@page - 1) * @items_per_page + 1 %>
+<% pend = @page * @items_per_page %>
+<% pend = @count if pend > @count %>
+<% if @count > 0 %>
+  <% showing = "(Showing #{pstart}-#{pend})" %>
 <% else %>
 <% end %>
-<% provide :htitle, "#{len} results found for \"#{params[:keywords]}\" #{showing}" %>
+<% provide :htitle, "#{@count} results found for \"#{params[:keywords]}\" #{showing}" %>
 <%= render 'grid' %>

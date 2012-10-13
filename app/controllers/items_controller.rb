@@ -25,18 +25,23 @@ class ItemsController < ApplicationController
   end
 
   def search
-    # TODO: page
-    if not params[:keywords].strip.empty?
-      @page = params[:page] || 1
-      @items_per_page = params[:num] || 50
-      @keywords = params[:keywords]
-      @items = Item.search(@keywords, @page, @items_per_page)
-      respond_to do |format|
-        format.html # show.html.erb
-        format.json { render json: @items }
+    @keywords = params[:keywords]
+    if not @keywords.nil?
+      if not @keywords.strip.empty?
+        @page = (params[:page] || 1).to_i
+        @items_per_page = (params[:num] || 50).to_i
+        results = Item.search(@keywords, @page, @items_per_page)
+        @items = results[0]
+        @count = results[1]
+        respond_to do |format|
+          format.html # show.html.erb
+          format.json { render json: @items }
+        end
+      else
+        redirect_to request.referer || :root
       end
     else
-      redirect_to request.referer || :root
+      redirect_to :root
     end
   end
 

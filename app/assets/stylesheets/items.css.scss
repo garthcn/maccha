@@ -32,6 +32,11 @@ div.grid {
   }
 }
 
+.list-container .pagination a,
+.list-container .pagination span {
+  line-height: 30px;
+}
+
 .form-container {
 }
 .form-container textarea {

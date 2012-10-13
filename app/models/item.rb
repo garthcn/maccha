@@ -22,14 +22,19 @@ class Item < ActiveRecord::Base
 
   def self.search(search, page, items_per_page)
     search_condition = "%" + search + "%"
-    page = page.to_i
-    items_per_page = items_per_page.to_i
+    # page = page.to_i
+    # items_per_page = items_per_page.to_i
     offset = (page - 1) * items_per_page
-    find(:all, :offset => offset, :limit => items_per_page, :order => 'id ASC',
-         :conditions => ['name LIKE ? OR description LIKE ? ' +
-           'OR category LIKE ? OR condition LIKE ? OR location LIKE ? ',
-           search_condition, search_condition, search_condition,
-           search_condition, search_condition])
+    conditions = ['name LIKE ? OR description LIKE ? ' +
+      'OR category LIKE ? OR condition LIKE ? OR location LIKE ? ',
+      search_condition, search_condition, search_condition,
+      search_condition, search_condition]
+
+    [
+      find(:all, :offset => offset, :limit => items_per_page, 
+           :order => 'id ASC', :conditions => conditions),
+      count(:all, :conditions => conditions)
+    ]
   end
   def self.adv_search(search)
     # TODO: advanced search
