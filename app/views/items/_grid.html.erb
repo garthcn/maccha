@@ -21,17 +21,19 @@
         <% end %>
       </ul>
 
-      <% if @keywords # search %>
-        <div class="pagination pagination-centered">
-          <% host = request.raw_host_with_port %>
-          <% path = request.path %>
-          <% # url = host + path %>
-          <% url = "#{path}?keywords=#{@keywords}" %>
-          <% total = @count / @items_per_page %>
-          <% total = total + 1 if @count % @items_per_page != 0 %>
-          <%= items_pagination url, @page, total, @items_per_page %>
-        </div>
-      <% end %>
+      <div class="pagination pagination-centered">
+        <% host = request.raw_host_with_port %>
+        <% path = request.path %>
+        <% # url = host + path %>
+        <% if @keywords %>
+          <% url = "#{path}?keywords=#{@keywords}&" if @keywords %>
+        <% else %>
+          <% url = "#{path}?" %>
+        <% end %>
+        <% total = @count / @items_per_page %>
+        <% total = total + 1 if @count % @items_per_page != 0 %>
+        <%= items_pagination url, @page, total, @items_per_page %>
+      </div>
     <% end %>
   </div>
 </div>

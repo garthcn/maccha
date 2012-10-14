@@ -5,8 +5,12 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
-
+    @page = (params[:page] || 1).to_i
+    @items_per_page = (params[:num] || 50).to_i
+    # @items = Item.all
+    results = Item.search("", @page, @items_per_page)
+    @items = results[0]
+    @count = results[1]
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }
