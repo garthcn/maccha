@@ -2,6 +2,7 @@ BestBay::Application.routes.draw do
   devise_for :users, :path => 'accounts'
 
   match 'search' => 'items#search'
+  match 'plans' => 'users#plans'
   resources :items
   resources :users
 
