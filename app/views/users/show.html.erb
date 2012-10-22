@@ -1,0 +1,37 @@
+<div class="user-container">
+  <div class="user-detail box">
+    <div class="user-basic">
+      <h3><%= @user.name %></h3>
+      <div class="user-info">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th class="">Email</th>
+              <td class=""><%= @user.email %></td>
+            </tr>
+            <tr>
+              <th class="">Buyer Type</th>
+              <td class=""><%= @buyer_type.to_s %></td>
+            </tr>
+            <tr>
+              <th class="">Seller Type</th>
+              <td class=""><%= @seller_type.to_s %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="user-rating">
+      <h3>User Ratings</h3>
+      <div class="well">
+
+      </div>
+    </div>
+    <div class="user-order">
+      <h3>Orders</h3>
+      <div class="well">
+
+      </div>
+    </div>
+  </div>
+</div>
