@@ -8,7 +8,7 @@ gem 'paperclip'
 gem 'factory_girl_rails' 
 gem 'rspec-rails' 
 gem 'devise' 
-gem 'ruby-debug19' 
+#gem 'ruby-debug19'
 
 group :development, :test do
    gem 'sqlite3'
