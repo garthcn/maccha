@@ -6,15 +6,19 @@ class UsersController < ApplicationController
   def plans
 
   end
-    
-  def show
+
+  def profile
     if user_signed_in?
-      @user = User.find(current_user[:id])
-      @user_type = UserType.find_by_user_id(current_user[:id])
-      @seller_type = @user_type ? @user_type.seller_type : 'default'
-      @buyer_type = @user_type ? @user_type.buyer_type : 'default'
+      redirect_to user_path(current_user)
     else
       redirect_to :root
     end
+  end
+    
+  def show
+    @user = User.find_by_id(params[:id]) || not_found
+    @user_type = UserType.find_by_user_id(params[:id])
+    @seller_type = @user_type ? @user_type.seller_type : 'default'
+    @buyer_type = @user_type ? @user_type.buyer_type : 'default'
   end
 end

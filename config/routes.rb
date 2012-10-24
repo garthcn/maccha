@@ -3,7 +3,7 @@ BestBay::Application.routes.draw do
 
   match 'search' => 'items#search'
   match 'plans' => 'users#plans'
-  match 'profile' => 'users#show'
+  match 'profile' => 'users#profile'
   resources :items
   resources :users
 
