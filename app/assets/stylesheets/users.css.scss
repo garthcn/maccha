@@ -30,19 +30,23 @@ div.user-container {
   border-bottom: 1px solid #E5E5E5;
 }
 .plans h3 {
-  font-weight: normal;
+  // font-weight: normal;
   font-size: 18px;
 }
 .plans h4 {
   font-weight: bold;
-  font-size: 14px;
+  font-size: 16px;
   border-bottom: 1px solid #E5E5E5;
+  color: #2c3a0a;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.8);
+  // font-variant:small-caps;
 }
 .plans p {
   margin: 8px 0;
 }
 .plans .plan-box {
   width: 250px;
+  min-height: 174px;
   margin-right: 23px;
   padding: 5px 14px;
   position: relative;
@@ -58,9 +62,14 @@ div.user-container {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
-.plans .billing {
+.plans .plan-box:last-child {
   margin-right: 0;
+}
+.plans .billing {
   // text-align: center;
+}
+.plans .billing .actions {
+  margin-top: 18px;
 }
 .plans .nextbill {
   font-weight: bold;
@@ -83,35 +92,61 @@ div.user-container {
 .plans .capabilities li:last-child {
   margin-bottom: 0;
 }
-.plan-box .actions {
+.plans .actions {
   text-align: center;
 }
 .plans .plan {
-  float: left;
-  width: 250px;
-  margin-right: 23px;
-  padding: 5px 14px;
-  position: relative;
-  overflow: hidden;
-  min-height: 163px;
-  border: 1px solid rgba(0,0,0,.1);
-  color: #fff;
-  font-size: .714em;
-  text-align: center;
-  background: #666 url(image_path('plan-bg.png'));
-  -moz-box-shadow: 0 2px 2px rgba(0,0,0,.15);
-  -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.15);
-  box-shadow: 0 2px 2px rgba(0,0,0,.15);
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+  // float: left;
+  // width: 250px;
+  // margin-right: 22px;
+  // padding: 5px 14px;
+  // position: relative;
+  // overflow: hidden;
+  // min-height: 163px;
+  // border: 1px solid rgba(0,0,0,.1);
+  // color: #000;
+  // background: #666 url(image_path('plan-bg.png'));
+  // -moz-box-shadow: 0 2px 2px rgba(0,0,0,.15);
+  // -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.15);
+  // box-shadow: 0 2px 2px rgba(0,0,0,.15);
+  // -webkit-border-radius: 4px;
+  // -moz-border-radius: 4px;
+  // border-radius: 4px;
 }
 .buyer-plans, .seller-plans {
   margin-top: 30px;
 }
 .plans .buyer-plan {
-  background-color: #bccf81;
+  // background-color: #c5e8f1;
 }
 .plans .seller-plan {
-  background-color: #dae6f4;
+  // background-color: #eaf5fa;
 }
+.plans .price {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  width: 64px;
+  height: 30px;
+  line-height: 25px;
+  vertical-align: top;
+  overflow: hidden;
+  // background-color: rgba(255, 255, 255, 0.8);
+  // background-color: #ddd;
+  // border-radius: 4px;
+  font-size: 12px;
+  color: #777;
+  text-align: right;
+}
+.plans .price strong {
+  font-size: 24px;
+  line-height: 30px;
+  color: #740000;
+  margin-left: 1px;
+}
+.plans .price em {
+  font-size: 11px;
+  font-style: normal;
+  margin-left: 2px;
+}
+
