@@ -36,7 +36,9 @@
         <p class="card"><strong>American Express</strong> ending in <strong>1018</strong></p>
         -->
         <p class="card"><img src="http://pics.ebaystatic.com/aw/pics/logos/logoPayPal_51x14.gif" alt="PayPal"> <strong>account@paypal.com</strong></p>
+        <!--
         <p class="actions"><a href="#" class="btn change-billing">Change Billing Info</a></p>
+        -->
       </div>
     </div>
     <div class="buyer-plans clearfix">
@@ -49,27 +51,27 @@
           <li>Flat-rate Shipping ($5.99)</li>
           <li>Easy Returns (within 30 days)</li>
         </ul>
-        <p class="actions"><a href="#" class="btn activate">Activate</a></p>
+        <p class="actions"><a href="#billing" class="btn activate" data-toggle="modal">Activate</a></p>
       </div>
       <div class="plan-box buyer-plan pull-left">
-        <h4>Maccha Free</h4>
+        <h4>Maccha Limited</h4>
         <p class="price">$<strong>10</strong><em>/mo.</em></p>
         <ul class="capabilities">
-          <li>Unlimited Watchlist Items</li>
+          <li>100 Watchlist Items</li>
           <li>Free Shipping</li>
           <li>Free Returns (within 30 days)</li>
         </ul>
-        <p class="actions"><a href="#" class="btn activate">Activate</a></p>
+        <p class="actions"><a href="#billing" class="btn activate" data-toggle="modal">Activate</a></p>
       </div>
       <div class="plan-box buyer-plan pull-right">
-        <h4>Maccha Prime</h4>
+        <h4>Maccha Unlimited</h4>
         <p class="price">$<strong>15</strong><em>/mo.</em></p>
         <ul class="capabilities">
           <li>Unlimited Watchlist Items</li>
           <li>Free 2-day Shipping</li>
           <li>Free Returns (within 365 days)</li>
         </ul>
-        <p class="actions"><a href="#" class="btn activate">Activate</a></p>
+        <p class="actions"><a href="#billing" class="btn activate" data-toggle="modal">Activate</a></p>
       </div>
     </div>
     <div class="seller-plans clearfix">
@@ -82,7 +84,7 @@
           <li>Feature 2</li>
           <li>Feature 3</li>
         </ul>
-        <p class="actions"><a href="#" class="btn activate">Activate</a></p>
+        <p class="actions"><a href="#billing" class="btn activate" data-toggle="modal">Activate</a></p>
       </div>
       <div class="plan-box seller-plan pull-left">
         <h4>Maccha Silver</h4>
@@ -92,7 +94,7 @@
           <li>Feature 2</li>
           <li>Feature 3</li>
         </ul>
-        <p class="actions"><a href="#" class="btn activate">Activate</a></p>
+        <p class="actions"><a href="#billing" class="btn activate" data-toggle="modal">Activate</a></p>
       </div>
       <div class="plan-box seller-plan pull-right">
         <h4>Maccha Gold</h4>
@@ -102,7 +104,7 @@
           <li>Feature 2</li>
           <li>Feature 3</li>
         </ul>
-        <p class="actions"><a href="#" class="btn activate">Activate</a></p>
+        <p class="actions"><a href="#billing" class="btn activate" data-toggle="modal">Activate</a></p>
       </div>
     </div>
     <!--
@@ -111,5 +113,54 @@
     </div>
     -->
   </div>
+</div>
+
+<div id="billing" class="billing-dlg modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Billing Information</h3>
+  </div>
+  <form action="#url" method="post">
+    <div class="modal-body">
+      <div class="plan">
+        You are now activating <strong>Maccha Bronze</strong>
+        <input type="hidden" name="buyer_type" value="2"><!-- buyer type -->
+        <input type="hidden" name="seller_type" value="0"><!-- seller type -->
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="billing_cc">Credit Card</label>
+        <div class="controls">
+          <input type="text" id="billing_cc" name="billing[cc]">
+          <span class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="billing_paypal">PayPal</label>
+        <div class="controls">
+          <input type="text" id="billing_paypal" name="billing[paypal]">
+          <span class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="billing_addr">Billing Address</label>
+        <div class="controls">
+          <input type="text" id="billing_addr" name="billing[billing_addr]">
+          <span class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="shipping_addr">Shipping Address</label>
+        <div class="controls">
+          <input type="text" id="shipping_addr" name="billing[shipping_addr]">
+          <span class="help-inline"></span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <span>Is this information correct?</span>
+      <input type="submit" class="btn btn-success" value="Yes, pay now!">
+      <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+    </div>
+  </form>
 </div>
 

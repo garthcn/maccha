@@ -23,4 +23,7 @@ class User < ActiveRecord::Base
   validates_length_of :password, 
     :within => 6..128, 
     :allow_blank => false
+
+  has_one :user_type
+  has_one :billing
 end
