@@ -3,10 +3,14 @@ BestBay::Application.routes.draw do
 
   match 'search' => 'items#search'
   match 'plans' => 'users#plans'
+  match 'users/activate' => 'users#activate'
+  match 'users/deactivate' => 'users#deactivate'
   match 'profile' => 'users#profile'
   resources :items
   resources :users
   resources :bids, :except => :new
+  resources :billings
+  # resources :user_types
 
   root :to => "home#index"
   # match ':controller(/:action(/:id))(.:format)'
