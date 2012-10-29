@@ -9,7 +9,7 @@ gem 'factory_girl_rails'
 gem 'rspec-rails' 
 gem 'devise' 
 #gem 'ruby-debug19'
-
+gem "judge"
 group :development, :test do
    gem 'sqlite3'
 end

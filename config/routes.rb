@@ -6,6 +6,7 @@ BestBay::Application.routes.draw do
   match 'profile' => 'users#profile'
   resources :items
   resources :users
+  resources :bids, :except => :new
 
   root :to => "home#index"
   # match ':controller(/:action(/:id))(.:format)'

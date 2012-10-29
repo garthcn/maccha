@@ -67,6 +67,7 @@
         <%= f.label :description, class: 'control-label' %>
         <div class='controls'>
           <%= f.text_area :description, rows: '5' %>
+          <%= f.hidden_field :seller_id,{:value => current_user.id} %>
           <span class="help-inline"></span>
         </div>
       </div>
@@ -116,3 +117,4 @@
     });
 }(window, jQuery));
 </script>
+

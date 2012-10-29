@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
   # GET /items/1.json
   def show
     @item = Item.find(params[:id])
-
+   @bid =  @item.bids.build
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @item }
@@ -72,8 +72,10 @@ class ItemsController < ApplicationController
     #params[:item][:start_time] = DateTime.parse(start_datetime)
     #end_datetime = params[:item][:end_date] + ' ' + params[:item][:end_time]
     #params[:item][:end_time] = DateTime.parse(end_datetime)
-
-    @item = Item.new(params[:item])
+    print "current_user #{params}}"
+     print "current_user_id #{current_user.id}"
+   # @item = current_user.items.build(params[:item])
+    @item =  Item.new(params[:item])
 
     respond_to do |format|
       if @item.save

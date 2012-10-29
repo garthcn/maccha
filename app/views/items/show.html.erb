@@ -8,26 +8,62 @@
       </div>
       <div class="item-info">
         <h2><%= @item.name %></h2>
-        <div class="countdown"><strong>Bid ends at</strong>: Dec 24, 2012 23:59:59</div>
-        <div class="price">
-          <p class="curr">
-            <span class="leftcol">Current Price: </span>
-            <em class="rightcol">$ <%= sprintf("%.2f", @item.price) %></em>
-          </p>
-          <p class="bid form-inline">
-            <span class="leftcol"></span>
-            <input type="text" class="input-small">
-            <a href="#" id="placebid" class="btn" title="">Place Bid</a>
-          </p>
-          <p class="curr buyitnow">
-            <span class="leftcol">Buy It Now Price: </span>
-            <em>$ <%= sprintf("%.2f", 123.45) %></em>
-          </p>
-          <p class="curr buyitnow">
-            <span class="leftcol"></span>
-            <a href="#" id="buyitnow" class="btn" title="">Buy It Now!</a>
-          </p>
-        </div>
+        <p class="curr">
+          <span class="leftcol">Current Price: </span>
+          <em class="rightcol">$ <%= sprintf("%.2f", @item.price) %></em>
+
+        </p>
+        <%if Time.now<@item.end_time%>
+        <div class="countdown"><strong>Bid starts at</strong>: <%= @item.start_time%>  </div>
+        <div class="countdown"><strong>Bid ends at</strong>: <%= @item.end_time%></div>
+            <%=form_for(@bid, :builder => Judge::FormBuilder) do |f| %>
+                <div class="field">
+                  <%=f.number_field :price, :min =>@item.price, :validate => true,:as => :number%>
+                  <%= f.hidden_field :item_id,{:value => @item.id} %>
+                  <%= f.hidden_field :seller_id, {:value => @item.seller_id} %>
+
+                  <%= f.hidden_field :buyer_id, {:value => current_user.id} %>
+                  <!--% if @bid.price > @item.price%  , :data => { :confirm => "Bid placed successfully!"}-->
+                  <%= f.submit "Place bid", class: "btn btn-large btn-primary",:html => {:id => "bid_form"} %>
+                  <!--%else%-->
+
+                  <!--%end%-->
+                </div>
+
+
+                <!--%else%-->
+
+                <!--%end%-->
+            <% end %>
+
+
+            <div class="price">
+
+
+
+
+
+
+
+
+
+
+
+
+              <p>
+              <p class="curr buyitnow">
+                <span class="leftcol">Buy It Now Price: </span>
+                <em>$ <%= sprintf("%.2f", 123.45) %></em>
+              </p>
+              <p class="curr buyitnow">
+                <span class="leftcol"></span>
+                <a href="#" id="buyitnow" class="btn" title="">Buy It Now!</a>
+              </p>
+            </div>
+            <%else%>
+            <strong >Bid end at: </strong> : <%= @item.end_time%>
+            <%end%>
+
         <div class="otherinfo">
           <p class="clearfix">
             <span class="pull-left">Condition:</span>
@@ -64,6 +100,34 @@
   </div>
 </div>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#bid_form").validate({
+            rules: {
 
-<!-- 
--->
+                "bid[price]":{
+                    required: true,
+                   // minlength: 7,
+                    equalTo: "@item.price"
+                }
+            },
+            messages: {
+
+                "bid[price]":{
+                    required: "Required",
+                   // minlength: "Min Length is 7 characters",
+                    equalTo: "New Password Doesn't Match"
+                }
+            }
+        });
+    });
+
+    $(function() {
+        $("#p").hover(function() {
+            alert("Hello world!");
+        });
+    });
+</script>
+
+
+<!-- -->

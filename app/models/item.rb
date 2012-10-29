@@ -1,7 +1,8 @@
 class Item < ActiveRecord::Base
   attr_accessible :category, :condition, :description, :location, :name, :price, :seller_id 
   attr_accessible :start_time, :end_time
-
+   has_many :bids
+  belongs_to :user
   attr_accessible :picture
   has_attached_file :picture, :styles => { :medium => "500x500>", :small => "300x300", :thumb => "100x100>" }, :default_url => "missing.png"
   validates :name, 
