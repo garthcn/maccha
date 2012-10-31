@@ -11,7 +11,7 @@
         <div class="price">
           <p class="curr">
             <span class="leftcol">Current Price: </span>
-            <em class="rightcol">$ <%= sprintf("%.2f", @item.price) %></em>
+            <em class="rightcol">$ <%= sprintf("%.2f", @item.bids.maximum(:price)) %></em>
           </p>
           <%if Time.now<@item.end_time%>
             <p class="countdown">
