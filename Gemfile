@@ -12,6 +12,8 @@ gem 'devise'
 gem "judge"
 group :development, :test do
    gem 'sqlite3'
+   gem 'populator'
+   gem 'faker'
 end
 
 group :production do
