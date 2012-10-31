@@ -1,2 +1,0 @@
-,whss WatchListController < ApplicationController
-end
