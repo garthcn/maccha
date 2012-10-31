@@ -8,15 +8,15 @@
       <ul class="clearfix">
         <% @items.each do |item| %>
           <li class="item-grid">
-          <a href="<%= url_for item %>" title="View item">
-            <div class="item-img">
-              <%= image_tag item.picture.url(:small) %>
-            </div>
-            <div class="item-info">
-              <p class="name"><%= item.name %></p>
-              <p class="price">$ <%= sprintf("%.2f", item.price) %></p>
-            </div>
-          </a>
+            <a href="<%= url_for item %>" title="View item">
+              <div class="item-img">
+                <%= image_tag item.picture.url(:small) %>
+              </div>
+              <div class="item-info">
+                <p class="name"><%= item.name %></p>
+                <p class="price"><%= sprintf("%.2f", item.price) %></p>
+              </div>
+            </a>
           </li>
         <% end %>
       </ul>

@@ -7,6 +7,10 @@
         </div>
       </div>
       <div class="item-info">
+        <div class="watch-form-container">
+          <%= render :partial => 'watch_lists/watch_list_form', 
+            :locals => { :item => @item } %>
+        </div>
         <h2><%= @item.name %></h2>
         <div class="price">
           <p class="curr">
@@ -35,7 +39,7 @@
                 <%= f.hidden_field :seller_id, {:value => @item.seller_id} %>
                 <%= f.hidden_field :buyer_id, {:value => current_user.id} %>
                 <!--% if @bid.price > @item.price%  , :data => { :confirm => "Bid placed successfully!"}-->
-                <%= f.submit "Place bid", class: "bid-btn btn btn-inverse",:html => {:id => "bid_form"} %>
+                <%= f.submit "Place bid", class: "bid-btn btn btn-success",:html => {:id => "bid_form"} %>
               </div>
             <% end %>
             <p class="curr buyitnow">
@@ -44,15 +48,11 @@
             </p>
             <p class="curr buyitnow-btn">
               <span class="leftcol"></span>
-              <a href="#" id="buyitnow" class="btn" title="">Buy It Now!</a>
+              <a href="#" id="buyitnow" class="btn btn-success" title="">Buy It Now!</a>
             </p>
           <%else%>
             <strong>Bid end at: </strong><%= @item.end_time%>
           <%end%>
-        </div>
-        <div class="watch-form-container">
-          <%= render :partial => 'watch_lists/watch_list_form', 
-            :locals => { :item => @item } %>
         </div>
         <div class="otherinfo">
           <p class="clearfix">
