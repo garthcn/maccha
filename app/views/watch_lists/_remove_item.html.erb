@@ -1,5 +1,5 @@
 <%= form_tag({:controller => 'watch_lists', :action => 'destroy'}, :method => 'delete', 
-    :remote => true) do %>
+    :remote => false) do %>
   <div>
     <%= hidden_field_tag :item_id, item.id %>
   </div>

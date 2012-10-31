@@ -14,15 +14,16 @@ class WatchListsController < ApplicationController
     watch_list = current_user.watch_lists.build(:item_id => params[:item_id].to_i) 
     watch_list.save
     respond_to do |format|
+      format.html { redirect_to item_path(params[:item_id]) }
       format.js
     end
   end
 
   def destroy
-    watch_list = current_user.watch_lists.find(params[:watch_list][:item_id])
+    watch_list = current_user.watch_lists.find_by_item_id(params[:item_id])
     watch_list.destroy
     respond_to do |format|
-      format.html {redirect_to :root}
+      format.html { redirect_to item_path(params[:item_id]) }
       format.js
     end
   end
