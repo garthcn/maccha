@@ -8,47 +8,45 @@
       </div>
       <div class="item-info">
         <h2><%= @item.name %></h2>
-        <p class="curr">
-          <span class="leftcol">Current Price: </span>
-          <em class="rightcol">$ <%= sprintf("%.2f", @item.price) %></em>
-        </p>
-        <%if Time.now<@item.end_time%>
-          <div class="countdown">
-            <strong>Bid starts at</strong>: <%= @item.start_time%>  
-          </div>
-          <div class="countdown">
-            <strong>Bid ends at</strong>: <%= @item.end_time%>
-          </div>
-            <%=form_for(@bid, :builder => Judge::FormBuilder) do |f| %>
+        <div class="price">
+          <p class="curr">
+            <span class="leftcol">Current Price: </span>
+            <em class="rightcol">$ <%= sprintf("%.2f", @item.price) %></em>
+          </p>
+          <%if Time.now<@item.end_time%>
+            <p class="countdown">
+              <span class="leftcol">Bid starts at: </span><em class="rightcol"><%= @item.start_time%></em>
+            </p>
+            <p class="countdown">
+              <span class="leftcol">Bid ends at: </span><em class="rightcol"><%= @item.end_time%></em>
+            </p>
+            <%=form_for(@bid, :builder => Judge::FormBuilder, :html => {:class => 'bid-form form-inline'}) do |f| %>
               <div class="field">
                 <%=f.number_field :price, :min =>@item.price, :validate => true,:as => :number%>
                 <%= f.hidden_field :item_id,{:value => @item.id} %>
                 <%= f.hidden_field :seller_id, {:value => @item.seller_id} %>
-
                 <%= f.hidden_field :buyer_id, {:value => current_user.id} %>
                 <!--% if @bid.price > @item.price%  , :data => { :confirm => "Bid placed successfully!"}-->
-                <%= f.submit "Place bid", class: "btn btn-large btn-primary",:html => {:id => "bid_form"} %>
+                <%= f.submit "Place bid", class: "bid-btn btn btn-inverse",:html => {:id => "bid_form"} %>
               </div>
             <% end %>
-
-            <div class="price">
-              <p class="curr buyitnow">
-                <span class="leftcol">Buy It Now Price: </span>
-                <em>$ <%= sprintf("%.2f", 123.45) %></em>
-              </p>
-              <p class="curr buyitnow">
-                <span class="leftcol"></span>
-                <a href="#" id="buyitnow" class="btn" title="">Buy It Now!</a>
-              </p>
-            </div>
+            <p class="curr buyitnow">
+              <span class="leftcol">Buy It Now Price: </span>
+              <em>$ <%= sprintf("%.2f", 123.45) %></em>
+            </p>
+            <p class="curr buyitnow-btn">
+              <span class="leftcol"></span>
+              <a href="#" id="buyitnow" class="btn" title="">Buy It Now!</a>
+            </p>
           <%else%>
-            <strong >Bid end at: </strong> : <%= @item.end_time%>
+            <strong>Bid end at: </strong><%= @item.end_time%>
           <%end%>
+        </div>
+        <div class="watch-form-container">
+          <%= render :partial => 'watch_lists/watch_list_form', 
+            :locals => { :item => @item } %>
+        </div>
         <div class="otherinfo">
-          <div class="watch-form-container">
-            <%= render :partial => 'watch_lists/watch_list_form', 
-              :locals => { :item => @item } %>
-          </div>
           <p class="clearfix">
             <span class="pull-left">Condition:</span>
             <span class="pull-right"><%= @item.condition %></span>
@@ -85,32 +83,32 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $("#bid_form").validate({
-            rules: {
-
-                "bid[price]":{
-                    required: true,
-                   // minlength: 7,
-                    equalTo: "@item.price"
-                }
-            },
-            messages: {
-
-                "bid[price]":{
-                    required: "Required",
-                   // minlength: "Min Length is 7 characters",
-                    equalTo: "New Password Doesn't Match"
-                }
-            }
-        });
-    });
-
-    $(function() {
-        $("#p").hover(function() {
-            alert("Hello world!");
-        });
-    });
+//     $(document).ready(function() {
+//         $("#bid_form").validate({
+//             rules: {
+// 
+//                 "bid[price]":{
+//                     required: true,
+//                    // minlength: 7,
+//                     equalTo: "@item.price"
+//                 }
+//             },
+//             messages: {
+// 
+//                 "bid[price]":{
+//                     required: "Required",
+//                    // minlength: "Min Length is 7 characters",
+//                     equalTo: "New Password Doesn't Match"
+//                 }
+//             }
+//         });
+//     });
+// 
+//     $(function() {
+//         $("#p").hover(function() {
+//             alert("Hello world!");
+//         });
+//     });
 </script>
 
 

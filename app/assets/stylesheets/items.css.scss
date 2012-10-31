@@ -68,6 +68,7 @@ div.grid {
 }
 .item-container .item-detail {
   padding: 20px;
+  position: relative;
 }
 .item-container .item-image {
   float: left;
@@ -117,6 +118,7 @@ div.grid {
 .item-container .item-info .leftcol {
   display: inline-block;
   width: 160px;
+  font-weight: 700;
 }
 .item-container .item-info em {
   font-style: normal;
@@ -133,17 +135,28 @@ div.grid {
   padding-bottom: 15px;
   border-bottom: 1px dotted #DDD;
 }
-.item-container .item-info .bid .btn {
-  margin-left: 8px;
+.item-container .item-info .bid-btn {
+  margin-left: 10px;
 }
 .item-container .item-info .buyitnow {
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 0;
   margin-top: 10px;
+  border-top: 1px dotted #DDD;
+  padding-top: 12px;
+}
+.item-container .item-info .buyitnow-btn {
+  margin-bottom: 0;
+  margin-top: 10px;
 }
 .item-container .item-info .countdown {
-  margin-bottom: 10px;
+  margin-bottom: 1px;
+  font-size: 14px;
+  color: #777;
+}
+.item-container .item-info .bid-form {
+  margin-top: 18px;
 }
 .item-container .otherinfo {
   padding-left: 20px;
@@ -260,5 +273,13 @@ div.grid {
   border-bottom: 1px solid #DDD;
   font-weight: 700;
   font-size: 12px;
+}
+
+.watch-form-container {
+  position: absolute;
+  width: 90px;
+  height: 42px;
+  top: 22px;
+  right: 3px;
 }
 
