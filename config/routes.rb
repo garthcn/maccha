@@ -11,6 +11,7 @@ BestBay::Application.routes.draw do
   resources :bids, :except => :new
   resources :billings
   # resources :user_types
+  resources :watch_lists
 
   root :to => "home#index"
   # match ':controller(/:action(/:id))(.:format)'

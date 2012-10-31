@@ -28,4 +28,10 @@ class User < ActiveRecord::Base
   has_one :user_type
   has_one :billing
 	has_many :items
+  has_many :watch_lists
+
+  def watching?(item)
+    self.watch_lists.find_by_item_id(item.id)
+  end
+  
 end
