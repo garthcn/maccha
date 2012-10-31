@@ -19,14 +19,18 @@
           </p>
           <%if Time.now<@item.end_time%>
             <p class="countdown">
-              <span class="leftcol">Bid starts at: </span><em class="rightcol"><%= @item.start_time%></em>
+              <span class="leftcol">Bid starts at: </span>
+              <em class="rightcol"><%= @item.start_time%></em>
             </p>
             <p class="countdown">
-              <span class="leftcol">Bid ends at: </span><em class="rightcol"><%= @item.end_time%></em>
+              <span class="leftcol">Bid ends at: </span>
+              <em class="rightcol"><%= @item.end_time%></em>
             </p>
             <%=form_for(@bid, :builder => Judge::FormBuilder, :html => {:class => 'bid-form form-inline'}) do |f| %>
               <div class="field">
-                <%=f.number_field :price, :min =>@item.price, :validate => true,:as => :number%>
+                <span class="leftcol">
+                  <%=f.number_field :price, :min =>@item.price, :validate => true,:as => :number, :class => 'input-small'%>
+                </span>
                 <%= f.hidden_field :item_id,{:value => @item.id} %>
                 <%= f.hidden_field :seller_id, {:value => @item.seller_id} %>
                 <%= f.hidden_field :buyer_id, {:value => current_user.id} %>
