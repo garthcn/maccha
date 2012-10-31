@@ -1,0 +1,8 @@
+<div id="watch-form">
+  <% if current_user.watching?(item) %>
+    <%= render :partial => 'watch_lists/remove_item', :locals => {:item => item} %>
+  <% else %>
+    <%= render :partial => 'watch_lists/add_item', :locals => {:item => item} %>
+  <% end %>
+</div>
+

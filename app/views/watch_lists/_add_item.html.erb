@@ -1,0 +1,10 @@
+<%= form_tag({:controller => 'watch_lists', :action => 'create'}, :method => 'post', 
+    :remote => true) do %>
+  <div>
+    <%= hidden_field_tag :item_id, item.id %>
+  </div>
+  <div>
+    <%= submit_tag "Watch", class: 'btn' %>
+  </div>
+<% end %>
+
