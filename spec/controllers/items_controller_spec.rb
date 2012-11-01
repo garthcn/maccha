@@ -42,26 +42,10 @@ describe ItemsController do
     end
   end
 
-  describe "GET show" do
-    it "assigns the requested item as @item" do
-      item = Item.create! valid_attributes
-      get :show, {:id => item.to_param}, valid_session
-      assigns(:item).should eq(item)
-    end
-  end
-
   describe "GET new" do
     it "assigns a new item as @item" do
       get :new, {}, valid_session
       assigns(:item).should be_a_new(Item)
-    end
-  end
-
-  describe "GET edit" do
-    it "assigns the requested item as @item" do
-      item = Item.create! valid_attributes
-      get :edit, {:id => item.to_param}, valid_session
-      assigns(:item).should eq(item)
     end
   end
 
