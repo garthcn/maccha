@@ -77,8 +77,8 @@ class ItemsController < ApplicationController
     #end_datetime = params[:item][:end_date] + ' ' + params[:item][:end_time]
     #params[:item][:end_time] = DateTime.parse(end_datetime)
 
-    print "current_user #{params}}"
-    print "current_user_id #{current_user.id}"
+    #print "current_user #{params}}"
+    #print "current_user_id #{current_user.id}"
     @item =  Item.new(params[:item])
 
 

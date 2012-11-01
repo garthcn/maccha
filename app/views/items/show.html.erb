@@ -45,9 +45,14 @@
 
                     <%= f.submit "Place bid", class: "bid-btn btn btn-success" %>
                 <%else%>
-                    <div> <strong>You current bid: </strong>     <%= @bid_existing.price%>       </div>
-                    <%= f.submit "Update bid", :action => 'update', class: "btn btn-large btn-primary", :data => { :confirm => "You have an existing bid, bid again?"} %>
+                  <span> 
+                    <strong>You current bid: </strong><%= @bid_existing.price%>       
+                  </span>
+                  <div>
+                    <span class="leftcol"></span>
+                    <%= f.submit "Update bid", :action => 'update', class: "btn btn-success", :data => { :confirm => "You have an existing bid, bid again?"} %>
                     <%= link_to 'Delete Bid', bid_path(@bid_existing), :confirm => "Are you sure?", :method => :delete, :class => 'btn btn-danger' %>
+                  </div>
                 <%end%>
               </div>
             <% end %>

@@ -2,15 +2,16 @@
 
   var Home = {
     init: function() {
-      $('div.user-menu')
-        .on('mouseover', function() {
+      $('div.user-menu').hover(
+        function() {
           //$(this).addClass('open');
           $('ul.dropdown-menu').fadeIn(400);
-        })
-        .on('mouseleave', function() {
+        },
+        function() {
           //$(this).removeClass('open')
           $('ul.dropdown-menu').fadeOut(400);
-        });
+        }
+      );
     }
   }
   $(document).ready(Home.init);

@@ -10,6 +10,6 @@ require 'spec_helper'
 #     end
 #   end
 # end
-describe BillingHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe BillingsHelper do
+  #pending "add some examples to (or delete) #{__FILE__}"
 end
