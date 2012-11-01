@@ -4,29 +4,8 @@ class UsersController < ApplicationController
   end
 
   def plans
-    @buyer_plans = [
-      {name: "No Plan", price: 0,
-        features: ["Shipping varies by item", "Return varies by item"]},
-      {name: "Maccha Basic", price: 5,
-        features: ["Flat-rate Shipping ($4.99)",
-          "Easy Returns (vary by item)"]},
-      {name: "Maccha Limited", price: 10,
-        features: ["Flat-rate Shipping ($4.99)",
-          "Free Returns (within 30 days)"]},
-      {name: "Maccha Unlimited", price: 15,
-        features: ["Free 2-day Shipping",
-          "Free Returns (within 365 days)"]}
-    ]
-    @seller_plans = [
-      {name: "No Plan", price: 0,
-        features: ["Feature a", "Feature b", "Feature c"]},
-      {name: "Maccha Bronze", price: 15,
-        features: ["Feature 1", "Feature 2", "Feature 3"]},
-      {name: "Maccha Silver", price: 25,
-        features: ["Feature 4", "Feature 5", "Feature 6"]},
-      {name: "Maccha Gold", price: 40,
-        features: ["Feature 7", "Feature 8", "Feature 9"]}
-    ]
+    @buyer_plans = buyer_plans
+    @seller_plans = seller_plans
 
     @billing = nil
     @no_billing = false
@@ -67,8 +46,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_id(params[:id]) || not_found
     @user_type = UserType.find_by_user_id(params[:id])
-    @seller_type = @user_type ? @user_type.seller_type : 'default'
-    @buyer_type = @user_type ? @user_type.buyer_type : 'default'
+    @seller_type = @user_type ? seller_plans[@user_type.seller_type][:name] : 'default'
+    @buyer_type = @user_type ? buyer_plans[@user_type.buyer_type][:name] : 'default'
   end
 
   def activate
