@@ -7,16 +7,22 @@ class BidsController < ApplicationController
       format.json { render json: @bid }
     end
   end
-
   def create
     #start_datetime = params[:Bid][:start_date] + ' ' +  params[:Bid][:start_time]
     #params[:Bid][:start_time] = DateTime.parse(start_datetime)
     #end_datetime = params[:Bid][:end_date] + ' ' + params[:Bid][:end_time]
     #params[:Bid][:end_time] = DateTime.parse(end_datetime)
+    #@bid_existing=Bid.find_by_item_id_and_buyer_id(params[:bid][:item_id],params[:bid][:buyer_id])
     @item = Item.find(params[:bid][:item_id])
+    #if          @bid_existing.nil?
+
+
+
     #@bid = Bid.new(params[:bid])
     @bid  =  @item.bids.build (params[:bid])
+    #else
 
+    #end
     #  print "new #{current_user.id}"
     respond_to do |format|
       if @bid.save
@@ -28,6 +34,34 @@ class BidsController < ApplicationController
         format.html {redirect_to @item, notice: 'Error! Bid was not created.'  }
         format.json { render json: @bid.errors, status: :unprocessable_entity }
       end
+    end
+  end
+  def update
+    @bid_existing=Bid.find(params[:id])
+    @item = Item.find(params[:bid][:item_id])
+    respond_to do |format|
+      if @bid_existing.update_attributes(params[:bid])
+        format.html { redirect_to @item, notice: 'Bid was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /items/1
+  # DELETE /items/1.json
+  def destroy
+
+    # @bid=Bid.find_by_item_id_and_buyer_id(params[:bid][:item_id],params[:bid][:buyer_id])
+    @bid_existing=Bid.find(params[:id])
+    @item = Item.find(@bid_existing.item_id)
+    @bid_existing.destroy
+
+    respond_to do |format|
+      format.html { redirect_to @item, notice: 'Bid was successfully deleted.'  }
+      format.json { head :no_content }
     end
   end
   def search

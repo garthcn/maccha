@@ -39,7 +39,16 @@
                 <%= f.hidden_field :seller_id, {:value => @item.seller_id} %>
                 <%= f.hidden_field :buyer_id, {:value => current_user.id} %>
                 <!--% if @bid.price > @item.price%  , :data => { :confirm => "Bid placed successfully!"}-->
-                <%= f.submit "Place bid", class: "bid-btn btn btn-success",:html => {:id => "bid_form"} %>
+
+                <% @bid_existing=Bid.find_by_item_id_and_buyer_id(@item.id,current_user.id) %>
+                <% if @bid_existing.nil?%>
+
+                    <%= f.submit "Place bid", class: "bid-btn btn btn-success" %>
+                <%else%>
+                    <div> <strong>You current bid: </strong>     <%= @bid_existing.price%>       </div>
+                    <%= f.submit "Update bid", :action => 'update', class: "btn btn-large btn-primary", :data => { :confirm => "You have an existing bid, bid again?"} %>
+                    <%= link_to 'Delete Bid', bid_path(@bid_existing), :confirm => "Are you sure?", :method => :delete, :class => 'btn btn-danger' %>
+                <%end%>
               </div>
             <% end %>
             <p class="curr buyitnow">
