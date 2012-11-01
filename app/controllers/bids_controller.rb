@@ -19,33 +19,55 @@ class BidsController < ApplicationController
 
 
     #@bid = Bid.new(params[:bid])
-    @bid  =  @item.bids.build (params[:bid])
+
     #else
 
     #end
     #  print "new #{current_user.id}"
+    if  ( !@item.bids.maximum(:price).nil?)
+
+      if params[:bid][:price].to_f <  @item.bids.maximum(:price)
+
+      else
+        @bid  =  @item.bids.build (params[:bid])
+
+      end
+
+
+    elsif
+       (  params[:bid][:price].to_f <  @item.price)
+
+    else
+      @bid  =  @item.bids.build (params[:bid])
+      end
     respond_to do |format|
-      if @bid.save
+      if  !@bid.nil? && @bid.save
         print " test1 #{@bid.attributes_before_type_cast["created_at"]}"
         print " test2 #{@bid.created_at}"
         format.html { redirect_to @item, notice: 'Bid was successfully created.' }
         format.json { render json: @bid, status: :created, location: @bid }
       else
-        format.html {redirect_to @item, notice: 'Error! Bid was not created.'  }
+        format.html {redirect_to @item, notice: 'Error! Bid was not created. Bid should be higher than current price!'  }
         format.json { render json: @bid.errors, status: :unprocessable_entity }
       end
-    end
+
+      end
   end
   def update
     @bid_existing=Bid.find(params[:id])
     @item = Item.find(params[:bid][:item_id])
     respond_to do |format|
+      if  params[:bid][:price].to_f <  @item.bids.maximum(:price)
+        format.html { redirect_to @item, notice: 'Bid not updated ! You should bid more than current price!.' }
+        else
+
       if @bid_existing.update_attributes(params[:bid])
         format.html { redirect_to @item, notice: 'Bid was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
         format.json { render json: @item.errors, status: :unprocessable_entity }
+      end
       end
     end
   end

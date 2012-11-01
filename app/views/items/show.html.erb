@@ -33,7 +33,7 @@
             <%=form_for(@bid, :builder => Judge::FormBuilder, :html => {:class => 'bid-form form-inline'}) do |f| %>
               <div class="field">
                 <span class="leftcol">
-                  <%=f.number_field :price, :min =>@item.price, :validate => true,:as => :number, :class => 'input-small'%>
+                  <%=f.number_field :price, :min =>@item.bids.maximum(:price), :validate => true,:as => :number, :class => 'input-small'%>
                 </span>
                 <%= f.hidden_field :item_id,{:value => @item.id} %>
                 <%= f.hidden_field :seller_id, {:value => @item.seller_id} %>
