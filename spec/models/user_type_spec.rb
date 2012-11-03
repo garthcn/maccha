@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: user_types
+#
+#  id          :integer          not null, primary key
+#  user_id     :integer
+#  buyer_type  :integer
+#  seller_type :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 require 'spec_helper'
 
 describe UserType do

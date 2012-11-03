@@ -14,6 +14,7 @@ group :development, :test do
    gem 'sqlite3'
    gem 'populator'
    gem 'faker'
+   gem 'annotate', ">=2.5.0"
 end
 
 group :production do

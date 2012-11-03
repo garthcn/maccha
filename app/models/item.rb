@@ -1,3 +1,25 @@
+# == Schema Information
+#
+# Table name: items
+#
+#  id                   :integer          not null, primary key
+#  name                 :string(255)
+#  category             :string(255)
+#  price                :float
+#  start_time           :datetime
+#  end_time             :datetime
+#  condition            :string(255)
+#  location             :string(255)
+#  description          :text
+#  seller_id            :integer
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  picture_file_name    :string(255)
+#  picture_content_type :string(255)
+#  picture_file_size    :integer
+#  picture_updated_at   :datetime
+#
+
 class Item < ActiveRecord::Base
   attr_accessible :category, :condition, :description, :location, :name, :price, :seller_id 
   attr_accessible :start_time, :end_time
