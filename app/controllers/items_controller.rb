@@ -21,10 +21,13 @@ class ItemsController < ApplicationController
   # GET /items/1.json
   def show
     @item = Item.find(params[:id])
-    @bid= Bid.find_by_item_id_and_buyer_id(@item.id,current_user.id)
-    if @bid.nil?
-      @bid =  @item.bids.build
-    end
+
+		if user_signed_in?
+			@bid= Bid.find_by_item_id_and_buyer_id(@item.id,current_user.id)
+			if @bid.nil?
+				@bid = @item.bids.build
+			end
+		end
 
     respond_to do |format|
       format.html # show.html.erb

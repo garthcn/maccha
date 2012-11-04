@@ -5,7 +5,7 @@ FactoryGirl.define do
     seller_id 1
     buyer_id 1
     item_id 1
-    amount 1.5
-    bid_time "2012-10-22 11:50:30"
+    price 10
+    bid_time
   end
 end

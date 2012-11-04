@@ -5,8 +5,8 @@ FactoryGirl.define do
     name "iPhone"
     category "Electronics"
     price "10.0"
-    start_time "2012-08-26 10:52:13"
-    end_time "2012-09-26 10:52:13"
+    start_time Date.today
+    end_time Date.tomorrow
     condition "like new"
     location "Pittsburgh"
     description "android is better"

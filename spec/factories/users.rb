@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :user do
-    name "jiasi"
-    password "111111"
-    email "jiasi@cmu.edu"
-    confirmed_at Time.now - 1.hour
+    name "Test Test"
+    password "aaaaaaaa"
+    email "glory791days@gmail.com"
+    #confirmed_at Time.now - 1.hour
   end
 end

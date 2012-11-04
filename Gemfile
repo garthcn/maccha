@@ -6,7 +6,8 @@ gem 'paperclip'
 
 #suggested gems by Todd
 gem 'factory_girl_rails' 
-gem 'rspec-rails' 
+gem 'rspec-rails'
+gem 'capybara'
 gem 'devise' 
 #gem 'ruby-debug19'
 gem "judge"

@@ -7,10 +7,13 @@
         </div>
       </div>
       <div class="item-info">
-        <div class="watch-form-container">
-          <%= render :partial => 'watch_lists/watch_list_form', 
-            :locals => { :item => @item } %>
-        </div>
+        <% if user_signed_in? %>
+          <div class="watch-form-container">
+            <%= render :partial => 'watch_lists/watch_list_form',
+              :locals => { :item => @item } %>
+          </div>
+        <% end %>
+
         <h2><%= @item.name %></h2>
         <div class="price">
           <p class="curr">
@@ -30,32 +33,30 @@
               <span class="leftcol">Bid ends at: </span>
               <em class="rightcol"><%= @item.end_time%></em>
             </p>
-            <%=form_for(@bid, :builder => Judge::FormBuilder, :html => {:class => 'bid-form form-inline'}) do |f| %>
-              <div class="field">
-                <span class="leftcol">
-                  <%=f.number_field :price, :min =>@item.bids.maximum(:price), :validate => true,:as => :number, :class => 'input-small'%>
-                </span>
-                <%= f.hidden_field :item_id,{:value => @item.id} %>
-                <%= f.hidden_field :seller_id, {:value => @item.seller_id} %>
-                <%= f.hidden_field :buyer_id, {:value => current_user.id} %>
-                <!--% if @bid.price > @item.price%  , :data => { :confirm => "Bid placed successfully!"}-->
-
-                <% @bid_existing=Bid.find_by_item_id_and_buyer_id(@item.id,current_user.id) %>
-                <% if @bid_existing.nil?%>
-
-                    <%= f.submit "Place bid", class: "bid-btn btn btn-success" %>
-                <%else%>
-                  <span> 
-                    <strong>You current bid: </strong><%= @bid_existing.price%>       
+            <% if user_signed_in? %>
+              <%=form_for(@bid, :builder => Judge::FormBuilder, :html => {:class => 'bid-form form-inline'}) do |f| %>
+                <div class="field">
+                  <span class="leftcol">
+                    <%=f.number_field :price, :min =>@item.price, :validate => true,:as => :number, :class => 'input-small'%>
                   </span>
-                  <div>
-                    <span class="leftcol"></span>
-                    <%= f.submit "Update bid", :action => 'update', class: "btn btn-success", :data => { :confirm => "You have an existing bid, bid again?"} %>
-                    <%= link_to 'Delete Bid', bid_path(@bid_existing), :confirm => "Are you sure?", :method => :delete, :class => 'btn btn-danger' %>
-                  </div>
-                <%end%>
-              </div>
+                  <%= f.hidden_field :item_id,{:value => @item.id} %>
+                  <%= f.hidden_field :seller_id, {:value => @item.seller_id} %>
+                  <%= f.hidden_field :buyer_id, {:value => current_user.id} %>
+                  <!--% if @bid.price > @item.price%  , :data => { :confirm => "Bid placed successfully!"}-->
+                  <% @bid_existing=Bid.find_by_item_id_and_buyer_id(@item.id,current_user.id) %>
+                  <% if @bid_existing.nil?%>
+
+                      <%= f.submit "Place bid", class: "bid-btn btn btn-success" %>
+                  <%else%>
+                      <div> <strong>You current bid: </strong>     <%= @bid_existing.price%>       </div>
+                      <%= f.submit "Update bid", :action => 'update', class: "btn btn-large btn-primary", :data => { :confirm => "You have an existing bid, bid again?"} %>
+                      <%= link_to 'Delete Bid', bid_path(@bid_existing), :confirm => "Are you sure?", :method => :delete, :class => 'btn btn-danger' %>
+                  <%end%>
+                </div>
+              <% end %>
+>>>>>>> modified item/show page for guests
             <% end %>
+
             <p class="curr buyitnow">
               <span class="leftcol">Buy It Now Price: </span>
               <em>$ <%= sprintf("%.2f", 123.45) %></em>
