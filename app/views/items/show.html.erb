@@ -60,10 +60,12 @@
               <span class="leftcol">Buy It Now Price: </span>
               <em>$ <%= sprintf("%.2f", 123.45) %></em>
             </p>
-            <p class="curr buyitnow-btn">
-              <span class="leftcol"></span>
-              <a href="#" id="buyitnow" class="btn btn-success" title="">Buy It Now!</a>
-            </p>
+            <% if user_signed_in? %>
+              <p class="curr buyitnow-btn">
+                <span class="leftcol"></span>
+                <a href="#" id="buyitnow" class="btn btn-success" title="">Buy It Now!</a>
+              </p>
+            <% end %>
           <%else%>
             <strong>Bid end at: </strong><%= @item.end_time%>
           <%end%>
