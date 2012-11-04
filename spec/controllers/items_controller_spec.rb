@@ -1,15 +1,6 @@
 require 'spec_helper'
 
 describe ItemsController do
-  before(:each) do
-    @request.env["devise.mapping"] = Devise.mappings[:user]
-    user = FactoryGirl.create(:user)
-    #p user_signed_in?
-    sign_in user
-    #p user_signed_in?
-    #p user
-  end 
-
   # This should return the minimal set of attributes required to create a valid
   # Item. As you add validations to Item, be sure to
   # update the return value of this method accordingly.
