@@ -1,5 +1,5 @@
 BestBay::Application.routes.draw do
-  devise_for :users, :path => 'accounts'
+  devise_for :users, :controllers => { :registrations => "registrations" }
 
   match 'search' => 'items#search'
   match 'plans' => 'users#plans'

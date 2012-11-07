@@ -14,13 +14,6 @@
       </div>
 
       <div class='control-group'>
-        <%= f.label :email, class: 'control-label' %>
-        <div class='controls'>
-          <%= f.email_field :email, :class => 'span5' %>
-        </div>
-      </div>
-
-      <div class='control-group'>
         <%= f.label :password, class: 'control-label' %>
         <i>(leave blank if you don't want to change it)</i>
         <div class='controls'>
@@ -32,14 +25,6 @@
         <%= f.label :confirm_password, class: 'control-label' %>
         <div class='controls'>
           <%= f.password_field :password_confirmation, :class => 'span5' %>
-        </div>
-      </div>
-
-      <div class='control-group'>
-        <%= f.label :current_password, class: 'control-label' %> 
-        <i>(we need your current password to confirm your changes)</i><br />
-        <div class='controls'>
-          <%= f.password_field :current_password %>
         </div>
       </div>
 
