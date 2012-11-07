@@ -29,6 +29,14 @@
       </div>
 
       <div class='control-group'>
+        <%= f.label :current_password, class: 'control-label' %> 
+        <i>(we need your current password to confirm your changes)</i><br />
+        <div class='controls'>
+          <%= f.password_field :current_password %>
+        </div>
+      </div>
+
+      <div class='control-group'>
         <div class='controls'>
           <%= f.submit "Update", class: 'btn' %>
         </div>
