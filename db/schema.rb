@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121029165720) do
+ActiveRecord::Schema.define(:version => 20121107164716) do
 
   create_table "bids", :force => true do |t|
     t.integer  "seller_id"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(:version => 20121029165720) do
     t.float    "price"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.datetime "expired_at"
+    t.integer  "status"
   end
 
   create_table "billings", :force => true do |t|
@@ -48,6 +50,16 @@ ActiveRecord::Schema.define(:version => 20121029165720) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+  end
+
+  create_table "transactions", :force => true do |t|
+    t.integer  "seller_id"
+    t.integer  "buyer_id"
+    t.integer  "item_id"
+    t.integer  "price"
+    t.boolean  "is_shipped"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "user_types", :force => true do |t|

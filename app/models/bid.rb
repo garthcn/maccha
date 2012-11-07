@@ -9,6 +9,8 @@
 #  price      :float
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  expired_at :datetime
+#  status     :integer
 #
 
 class Bid < ActiveRecord::Base
