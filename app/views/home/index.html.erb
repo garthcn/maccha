@@ -1,137 +1,427 @@
-<div class="featured">
-  <div class="container">
-    <div class="slide box">
-      <h2 class="slide-title">Hot Items</h2>
-      <div class="slide-content">
-        <ul class="itemlist clearfix">
-          <li class="item">
-          <a href="#" title="View item">
-            <div class="item-img">
-              <img src="<%= asset_path "missing.png" %>" alt="">
+<div class="home box">
+  <div class="promoted row-fluid">
+    <div id="featured-items" class="carousel slide span8">
+      <div class="carousel-inner">
+        <div class="active item clearfix">
+          <a href="#url" title="">
+            <div class="image">
+              <img src="<%= asset_path "fake-item-1.jpg" %>" alt="">
             </div>
-            <div class="item-info">
-              <p class="name">Item Name Item Name Item Name Item Name </p>
-              <p class="price">$123.45</p>
+            <div class="desc">
+              <h4>Item Name</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ligula nisi. Praesent vel placerat nunc. Nulla at augue sit amet ipsum dictum ornare a in mi. Praesent ultricies suscipit nisl.</p>
             </div>
           </a>
-          </li>
-          <li class="item">
-          <a href="#" title="View item">
-            <div class="item-img">
-              <img src="<%= asset_path "missing.png" %>" alt="">
+        </div>
+        <div class="item clearfix">
+          <a href="#url" title="">
+            <div class="image">
+              <img src="<%= asset_path "fake-item-2.jpg" %>" alt="">
             </div>
-            <div class="item-info">
-              <p class="name">Item Name Item Name Item Name Item Name </p>
-              <p class="price">$123.45</p>
-            </div>
-          </a>
-          </li>
-          <li class="item">
-          <a href="#" title="View item">
-            <div class="item-img">
-              <img src="<%= asset_path "missing.png" %>" alt="">
-            </div>
-            <div class="item-info">
-              <p class="name">Item Name </p>
-              <p class="price">$123.45</p>
+            <div class="desc">
+              <h4>Item Name</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ligula nisi. Praesent vel placerat nunc. Nulla at augue sit amet ipsum dictum ornare a in mi. Praesent ultricies suscipit nisl.</p>
             </div>
           </a>
-          </li>
-          <li class="item">
-          <a href="#" title="View item">
-            <div class="item-img">
-              <img src="<%= asset_path "missing.png" %>" alt="">
+        </div>
+        <div class="item clearfix">
+          <a href="#url" title="">
+            <div class="image">
+              <img src="<%= asset_path "fake-item-3.jpg" %>" alt="">
             </div>
-            <div class="item-info">
-              <p class="name">Item Name </p>
-              <p class="price">$123.45</p>
-            </div>
-          </a>
-          </li>
-          <li class="item">
-          <a href="#" title="View item">
-            <div class="item-img">
-              <img src="<%= asset_path "missing.png" %>" alt="">
-            </div>
-            <div class="item-info">
-              <p class="name">Item Name </p>
-              <p class="price">$123.45</p>
+            <div class="desc">
+              <h4>Item Name</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ligula nisi. Praesent vel placerat nunc. Nulla at augue sit amet ipsum dictum ornare a in mi. Praesent ultricies suscipit nisl.</p>
             </div>
           </a>
-          </li>
-          <li class="item">
-          <a href="#" title="View item">
-            <div class="item-img">
-              <img src="<%= asset_path "missing.png" %>" alt="">
+        </div>
+        <div class="item clearfix">
+          <a href="#url" title="">
+            <div class="image">
+              <img src="<%= asset_path "fake-item-4.jpg" %>" alt="">
             </div>
-            <div class="item-info">
-              <p class="name">Item Name </p>
-              <p class="price">$123.45</p>
-            </div>
-          </a>
-          </li>
-          <li class="item">
-          <a href="#" title="View item">
-            <div class="item-img">
-              <img src="<%= asset_path "missing.png" %>" alt="">
-            </div>
-            <div class="item-info">
-              <p class="name">Item Name</p>
-              <p class="price">$1234.56</p>
+            <div class="desc">
+              <h4>Item Name</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ligula nisi. Praesent vel placerat nunc. Nulla at augue sit amet ipsum dictum ornare a in mi. Praesent ultricies suscipit nisl.</p>
             </div>
           </a>
-          </li>
-        </ul>
-      </div>
-      <div class="clearfix">
-        <div class="slide-control">
-          <a href="#" class="control"></a>
-          <a href="#" class="control active"></a>
-          <a href="#" class="control"></a>
-          <a href="#" class="control"></a>
-          <a href="#" class="control"></a>
         </div>
       </div>
-      <a href="#" class="goto prev">&nbsp;</a>
-      <a href="#" class="goto next">&nbsp;</a>
+      <a class="carousel-control left" href="#featured-items" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#featured-items" data-slide="next">&rsaquo;</a>
+    </div>
+
+    <div class="main-ad span4">
+      <a href="#" title="">
+        <img src="<%= asset_path "fake-ad-1.png" %>" alt="">
+      </a>
+    </div>
+  </div>
+  <div class=" row-fluid">
+    <div class="home-item span4">
+      <a href="#">
+        <div class="image">
+          <img src="<%= asset_path "fake-item-2.jpg" %>" alt="">
+        </div>
+        <div class="desc">
+          <h4>This is the item's name</h4>
+          <p class="price">$ 12.34</p>
+          <p class="text">View Details &raquo;</p>
+        </div>
+      </a>
+    </div>
+    <div class="home-item span4">
+      <a href="#">
+        <div class="image">
+          <img src="<%= asset_path "fake-item-3.jpg" %>" alt="">
+        </div>
+        <div class="desc">
+          <h4>This is the item's name</h4>
+          <p class="price">$ 12.34</p>
+          <p class="text">View Details &raquo;</p>
+        </div>
+      </a>
+    </div>
+    <div class="home-item span4">
+      <a href="#">
+        <div class="image">
+          <img src="<%= asset_path "fake-item-4.jpg" %>" alt="">
+        </div>
+        <div class="desc">
+          <h4>This is the item's name</h4>
+          <p class="price">$ 12.34</p>
+          <p class="text">View Details &raquo;</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class=" row-fluid">
+    <div class="home-item span4">
+      <a href="#">
+        <div class="image">
+          <img src="<%= asset_path "fake-item-4.jpg" %>" alt="">
+        </div>
+        <div class="desc">
+          <h4>This is the item's name</h4>
+          <p class="price">$ 123.45</p>
+          <p class="text">View Details &raquo;</p>
+        </div>
+      </a>
+    </div>
+    <div class="home-item span4">
+      <a href="#">
+        <div class="image">
+          <img src="<%= asset_path "fake-item-1.jpg" %>" alt="">
+        </div>
+        <div class="desc">
+          <h4>This is the item's name</h4>
+          <p class="price">$ 123.45</p>
+          <p class="text">View Details &raquo;</p>
+        </div>
+      </a>
+    </div>
+    <div class="home-item span4">
+      <a href="#">
+        <div class="image">
+          <img src="<%= asset_path "fake-item-5.jpg" %>" alt="">
+        </div>
+        <div class="desc">
+          <h4>This is the item's name</h4>
+          <p class="price">$ 123.45</p>
+          <p class="text">View Details &raquo;</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="row-ad row-fluid">
+    <a href="#">THIS IS AN ADVERTISEMENT</a>
+  </div>
+
+  <h3>Best Sellers This Month</h3>
+  <div class="best-sellers row-fluid">
+    <div class="home-item span4">
+      <a href="#">
+        <div class="image">
+          <img src="<%= asset_path "fake-item-5.jpg" %>" alt="">
+        </div>
+        <div class="desc">
+          <h4>This is the item's name</h4>
+          <p class="price">$ 123.45</p>
+          <p class="text">View Details &raquo;</p>
+        </div>
+      </a>
+    </div>
+    <div class="home-item span4">
+      <a href="#">
+        <div class="image">
+          <img src="<%= asset_path "fake-item-9.jpg" %>" alt="">
+        </div>
+        <div class="desc">
+          <h4>This is the item's name</h4>
+          <p class="price">$ 123.45</p>
+          <p class="text">View Details &raquo;</p>
+        </div>
+      </a>
+    </div>
+    <div class="home-item span4">
+      <a href="#">
+        <div class="image">
+          <img src="<%= asset_path "fake-item-2.jpg" %>" alt="">
+        </div>
+        <div class="desc">
+          <h4>This is the item's name</h4>
+          <p class="price">$ 123.45</p>
+          <p class="text">View Details &raquo;</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="best-sellers row-fluid">
+    <div class="home-item span4">
+      <a href="#">
+        <div class="image">
+          <img src="<%= asset_path "fake-item-4.jpg" %>" alt="">
+        </div>
+        <div class="desc">
+          <h4>This is the item's name</h4>
+          <p class="price">$ 123.45</p>
+          <p class="text">View Details &raquo;</p>
+        </div>
+      </a>
+    </div>
+    <div class="home-item span4">
+      <a href="#">
+        <div class="image">
+          <img src="<%= asset_path "fake-item-7.jpg" %>" alt="">
+        </div>
+        <div class="desc">
+          <h4>This is the item's name</h4>
+          <p class="price">$ 123.45</p>
+          <p class="text">View Details &raquo;</p>
+        </div>
+      </a>
+    </div>
+    <div class="home-item span4">
+      <a href="#">
+        <div class="image">
+          <img src="<%= asset_path "fake-item-8.jpg" %>" alt="">
+        </div>
+        <div class="desc">
+          <h4>This is the item's name</h4>
+          <p class="price">$ 123.45</p>
+          <p class="text">View Details &raquo;</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <h3>Related To Items You've Bid On</h3>
+  <div class="rec rec-viewed row-fluid">
+    <div class="home-item span4">
+      <a href="#">
+        <div class="image">
+          <img src="<%= asset_path "fake-item-5.jpg" %>" alt="">
+        </div>
+        <div class="desc">
+          <h4>This is the item's name</h4>
+          <p class="price">$ 123.45</p>
+          <p class="text">View Details &raquo;</p>
+        </div>
+      </a>
+    </div>
+    <div class="home-item span4">
+      <a href="#">
+        <div class="image">
+          <img src="<%= asset_path "fake-item-6.jpg" %>" alt="">
+        </div>
+        <div class="desc">
+          <h4>This is the item's name</h4>
+          <p class="price">$ 123.45</p>
+          <p class="text">View Details &raquo;</p>
+        </div>
+      </a>
+    </div>
+    <div class="home-item span4">
+      <a href="#">
+        <div class="image">
+          <img src="<%= asset_path "fake-item-7.jpg" %>" alt="">
+        </div>
+        <div class="desc">
+          <h4>This is the item's name</h4>
+          <p class="price">$ 123.45</p>
+          <p class="text">View Details &raquo;</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="rec rec-viewed row-fluid">
+    <div class="home-item span4">
+      <a href="#">
+        <div class="image">
+          <img src="<%= asset_path "fake-item-6.jpg" %>" alt="">
+        </div>
+        <div class="desc">
+          <h4>This is the item's name</h4>
+          <p class="price">$ 123.45</p>
+          <p class="text">View Details &raquo;</p>
+        </div>
+      </a>
+    </div>
+    <div class="home-item span4">
+      <a href="#">
+        <div class="image">
+          <img src="<%= asset_path "fake-item-7.jpg" %>" alt="">
+        </div>
+        <div class="desc">
+          <h4>This is the item's name</h4>
+          <p class="price">$ 123.45</p>
+          <p class="text">View Details &raquo;</p>
+        </div>
+      </a>
+    </div>
+    <div class="home-item span4">
+      <a href="#">
+        <div class="image">
+          <img src="<%= asset_path "fake-item-5.jpg" %>" alt="">
+        </div>
+        <div class="desc">
+          <h4>This is the item's name</h4>
+          <p class="price">$ 123.45</p>
+          <p class="text">View Details &raquo;</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <h3>Related To Items You've Viewed</h3>
+  <div class="rec rec-viewed row-fluid">
+    <div class="home-item span4">
+      <a href="#">
+        <div class="image">
+          <img src="<%= asset_path "fake-item-8.jpg" %>" alt="">
+        </div>
+        <div class="desc">
+          <h4>This is the item's name</h4>
+          <p class="price">$ 222.33</p>
+          <p class="text">View Details &raquo;</p>
+        </div>
+      </a>
+    </div>
+    <div class="home-item span4">
+      <a href="#">
+        <div class="image">
+          <img src="<%= asset_path "fake-item-9.jpg" %>" alt="">
+        </div>
+        <div class="desc">
+          <h4>This is the item's name</h4>
+          <p class="price">$ 222.33</p>
+          <p class="text">View Details &raquo;</p>
+        </div>
+      </a>
+    </div>
+    <div class="home-item span4">
+      <a href="#">
+        <div class="image">
+          <img src="<%= asset_path "fake-item-10.jpg" %>" alt="">
+        </div>
+        <div class="desc">
+          <h4>This is the item's name</h4>
+          <p class="price">$ 222.33</p>
+          <p class="text">View Details &raquo;</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="rec rec-viewed row-fluid">
+    <div class="home-item span4">
+      <a href="#">
+        <div class="image">
+          <img src="<%= asset_path "fake-item-9.jpg" %>" alt="">
+        </div>
+        <div class="desc">
+          <h4>This is the item's name</h4>
+          <p class="price">$ 222.33</p>
+          <p class="text">View Details &raquo;</p>
+        </div>
+      </a>
+    </div>
+    <div class="home-item span4">
+      <a href="#">
+        <div class="image">
+          <img src="<%= asset_path "fake-item-10.jpg" %>" alt="">
+        </div>
+        <div class="desc">
+          <h4>This is the item's name</h4>
+          <p class="price">$ 222.33</p>
+          <p class="text">View Details &raquo;</p>
+        </div>
+      </a>
+    </div>
+    <div class="home-item span4">
+      <a href="#">
+        <div class="image">
+          <img src="<%= asset_path "fake-item-8.jpg" %>" alt="">
+        </div>
+        <div class="desc">
+          <h4>This is the item's name</h4>
+          <p class="price">$ 222.33</p>
+          <p class="text">View Details &raquo;</p>
+        </div>
+      </a>
     </div>
   </div>
 </div>
 
-<!--
-<div class="info row-fluid">
-  <div class="container">
-    <div class="span3">
-      <h3>How To Buy</h3>
-      <div class="info-content">
-        <p>test test test </p>
-        <p>test test test </p>
-        <p>test test test </p>
-        <p>test test test </p>
-        <p>test test test </p>
-      </div>
+<div class="float-ad">
+  <h3>Advertisements 
+    <button type="button" class="close"><em></em><!-- ×--></button>
+  </h3>
+  <div class="ad-content">
+    <div class="ad">
+      <a href="#">
+        <img src="<%= asset_path "fake-ad-2.png" %>" alt="">
+      </a>
     </div>
-    <div class="span1"></div>
-    <div class="span3">
-      <h3>How To Sell</h3>
-      <div class="info-content">
-        <p>test test test </p>
-        <p>test test test </p>
-        <p>test test test </p>
-      </div>
+    <div class="ad">
+      <a href="#">
+        <img src="<%= asset_path "fake-ad-3.png" %>" alt="">
+      </a>
     </div>
-    <div class="span1"></div>
-    <div class="span4">
-      <h3>About Maccha</h3>
-      <div class="info-content">
-        <p>test test test </p>
-        <p>test test test </p>
-        <p>test test test </p>
-        <p>test test test </p>
-      </div>
+    <div class="ad">
+      <a href="#">
+        <img src="<%= asset_path "fake-ad-4.png" %>" alt="">
+      </a>
     </div>
   </div>
 </div>
--->
 
+<script>
+(function() {
+    var $slides = $('#featured-items');
+    $slides.carousel({
+        // interval: 3000
+    });
+
+    var $adc = $('.ad-content'),
+        $ad = $adc.parent(),
+        $close = $ad.find('.close'),
+        $closeText = $close.find('em');
+
+    if ($ad.hasClass('no-ad')) return;
+    function anim() {
+        if ($adc.hasClass('showed')) {
+            $closeText.text('Show Ads');
+            $adc.removeClass('showed');
+        } else {
+            $closeText.text('Close Ads');
+            $adc.addClass('showed');
+        }
+    }
+    setTimeout(anim, 1000);
+    $close.click(function(e) {
+        anim();
+        e.preventDefault();
+    });
+}());
+</script>
 
