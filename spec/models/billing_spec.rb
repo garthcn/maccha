@@ -4,7 +4,7 @@
 #
 #  id            :integer          not null, primary key
 #  user_id       :integer
-#  cc            :string(255)
+#  credit_card   :string(255)
 #  paypal        :string(255)
 #  billing_addr  :text
 #  shipping_addr :text
