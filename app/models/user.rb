@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
   validates_length_of :password, 
     :within => 6..128
 
-  has_many :items
+  has_many :items , :foreign_key => 'seller_id'
   has_many :bids, :foreign_key => 'buyer_id'
   has_many :transactions, :foreign_key => 'buyer_id'
   has_many :watch_lists
