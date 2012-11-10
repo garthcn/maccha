@@ -50,8 +50,8 @@ class User < ActiveRecord::Base
     :within => 6..128
 
   has_many :items
-  has_many :bids
-  has_many :transactions
+  has_many :bids, :foreign_key => 'buyer_id'
+  has_many :transactions, :foreign_key => 'buyer_id'
   has_many :watch_lists
 
   has_one :user_type

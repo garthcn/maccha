@@ -16,7 +16,7 @@
 class Bid < ActiveRecord::Base
   attr_accessible :price, :buyer_id, :item_id, :seller_id, :created_at, :updated_at
 
-  belongs_to :user
+  belongs_to :user, :foreign_key => 'buyer_id'
   belongs_to :item
 
   validates :price,
