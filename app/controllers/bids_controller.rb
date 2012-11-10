@@ -92,4 +92,12 @@ class BidsController < ApplicationController
   def find
     @items = Item.find_by(params[:bid][:item_id])
   end
+
+  def apply_to_cancel
+    # TODO
+    # respond_to do |format|
+    #   format.html { redirect_to @item, notice: 'Application submitted. Please wait for confirmation.'  }
+    #   format.json { head :no_content }
+    # end
+  end
 end

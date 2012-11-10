@@ -34,10 +34,10 @@
               <em class="rightcol"><%= @item.end_time%></em>
             </p>
             <% if user_signed_in? %>
-              <%=form_for(@bid, :builder => Judge::FormBuilder, :html => {:class => 'bid-form form-inline'}) do |f| %>
+              <%=form_for(@bid, :url => bids_path, :method => :post, :builder => Judge::FormBuilder, :html => {:class => 'bid-form form-inline'}) do |f| %>
                 <div class="field">
                   <span class="leftcol">
-                    <%=f.number_field :price, :min =>@item.price, :validate => true,:as => :number, :class => 'input-small'%>
+                    <%=f.number_field :price, :min =>@item.price, :validate => true, :as => :number, :class => 'input-small'%>
                   </span>
                   <%= f.hidden_field :item_id,{:value => @item.id} %>
                   <%= f.hidden_field :seller_id, {:value => @item.seller_id} %>
@@ -45,11 +45,11 @@
                   <!--% if @bid.price > @item.price%  , :data => { :confirm => "Bid placed successfully!"}-->
                   <!--% @bid_existing=Bid.find_by_item_id_and_buyer_id(@item.id,current_user.id) %-->
                   <% if @bid_existing.nil?%>
-                      <%= f.submit "Place bid", class: "bid-btn btn btn-success" %>
+                      <%= f.submit "Place Bid", class: "bid-btn btn btn-success", :data => { :confirm => "Are you sure?"} %>
                   <%else%>
-                      <div> <strong>You current bid: </strong>     <%= @bid_existing.price%>       </div>
-                      <%= f.submit "Increase the bid", class: "btn btn-large btn-primary", :data => { :confirm => "You have an existing bid, bid again?"} %>
-                      <%= link_to 'Delete Bid', bid_path(@bid_existing), :confirm => "Are you sure?", :method => :delete, :class => 'btn btn-danger' %>
+                      <%= f.submit "Place Bid", class: "bid-btn btn btn-success", :data => { :confirm => "Are you sure?"} %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <%= link_to 'Apply to cancel bid', bids_apply_to_cancel_path, :confirm => "You have to wait until administrators accept it. Are you sure?", :class => 'cancel-bid' %>
+                      <p>You last bid: <%= @bid_existing.price%></p>
                   <%end%>
                 </div>
               <% end %>
