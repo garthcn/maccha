@@ -45,6 +45,8 @@ class UsersController < ApplicationController
     
   def show
     @user = User.find_by_id(params[:id]) || not_found
+    @user_bids = @user.bids
+    @user_transactions = @user.transactions
     @user_type = UserType.find_by_user_id(params[:id])
     @seller_type = @user_type ? seller_plans[@user_type.seller_type][:name] : 'default'
     @buyer_type = @user_type ? buyer_plans[@user_type.buyer_type][:name] : 'default'

@@ -1,0 +1,37 @@
+<div class='well'>
+<% if @user_transactions.empty? %>
+  <span>No Transactions found.</span>
+<% else %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>
+          Item
+        </td>
+        <td>
+          Price
+        </td>
+        <td>
+          Status
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+    <% @user_transactions.each do |transaction| %>
+      <tr>
+        <td>
+          <%= transaction.item.name %>
+        </td>
+        <td>
+          <%= transaction.price %>
+        </td>
+        <td>
+          <%= transaction.is_shipped %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+</div>
+

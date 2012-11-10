@@ -1,4 +1,13 @@
 class BidsController < ApplicationController
+  def index
+    if current_user
+      @user_bids = current_user.bids
+      render 'index'
+    else
+      redirect_to :root
+    end
+  end
+
   def new
     @bid = Bid.new
 

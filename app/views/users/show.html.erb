@@ -37,11 +37,13 @@
     </div>
     <% if current_user && current_user.id.to_s == params[:id] %>
       <div class="user-private">
-        <div class="user-order">
-          <h3>Orders</h3>
-          <div class="well">
-            Current orders go here. 
-          </div>
+        <div class="user-bids">
+          <h3>Bids</h3>
+          <%= render 'users/bid_list' %>
+        </div>
+        <div class="user-transactions">
+          <h3>Transactions</h3>
+          <%= render 'users/transaction_list' %>
         </div>
         <div class="user-account-action">
           <%= link_to "Edit account", edit_user_registration_path(current_user), :class => 'btn', :method => :get %>
