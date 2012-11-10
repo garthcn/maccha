@@ -19,9 +19,11 @@
           <p class="curr">
             <span class="leftcol">Current Price: </span>
             <% if @item.bids and @item.bids.maximum(:price) %>
-              <em class="rightcol">$ <%= sprintf("%.2f", @item.bids.maximum(:price)) %></em>
+              <% max_price = @item.bids.maximum(:price) %>
+              <em class="rightcol">$ <%= sprintf("%.2f", max_price) %></em>
             <% else %>
-              <em class="rightcol">$ <%= sprintf("%.2f", @item.price) %></em>
+              <% max_price = @item.price %>
+              <em class="rightcol">$ <%= sprintf("%.2f", max_price) %></em>
             <% end %>
           </p>
           <%if Time.now<@item.end_time%>
@@ -37,7 +39,7 @@
               <%=form_for(@bid, :url => bids_path, :method => :post, :builder => Judge::FormBuilder, :html => {:class => 'bid-form form-inline'}) do |f| %>
                 <div class="field">
                   <span class="leftcol">
-                    <%=f.number_field :price, :min =>@item.price, :validate => true, :as => :number, :class => 'input-small'%>
+                    <%=f.text_field :price, :min => max_price, :validate => true, :as => :float, :class => 'input-small'%>
                   </span>
                   <%= f.hidden_field :item_id,{:value => @item.id} %>
                   <%= f.hidden_field :seller_id, {:value => @item.seller_id} %>
@@ -45,11 +47,11 @@
                   <!--% if @bid.price > @item.price%  , :data => { :confirm => "Bid placed successfully!"}-->
                   <!--% @bid_existing=Bid.find_by_item_id_and_buyer_id(@item.id,current_user.id) %-->
                   <% if @bid_existing.nil?%>
-                      <%= f.submit "Place Bid", class: "bid-btn btn btn-success", :data => { :confirm => "Are you sure?"} %>
+                    <%= f.submit "Place Bid", class: "bid-btn btn btn-success" %>
                   <%else%>
-                      <%= f.submit "Place Bid", class: "bid-btn btn btn-success", :data => { :confirm => "Are you sure?"} %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <%= link_to 'Apply to cancel bid', bids_apply_to_cancel_path, :confirm => "You have to wait until administrators accept it. Are you sure?", :class => 'cancel-bid' %>
-                      <p>You last bid: <%= @bid_existing.price%></p>
+                    <%= f.submit "Place Bid", class: "bid-btn btn btn-success" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <%= link_to 'Apply to cancel bid', bids_apply_to_cancel_path, :confirm => "You have to wait until administrators accept it. Are you sure?", :class => 'cancel-bid' %>
+                    <p>You last bid: <%= @bid_existing.price %></p>
                   <%end%>
                 </div>
               <% end %>
@@ -106,6 +108,29 @@
 </div>
 
 <script type="text/javascript">
+(function() {
+    var $btn = $('.bid-btn'),
+        $price = $('#bid_price'),
+        oldPrice = <%= max_price %>;
+    $btn.click(function(e) {
+        var price = parseFloat($price.val());
+        if (!price) {
+            alert('You have not placed a bid.');
+            e.preventDefault();
+            return;
+        }
+        price = Math.round(price * 100) / 100;
+        if (price <= oldPrice) {
+            alert('The bid has to be higher than current price.');
+            e.preventDefault();
+            return;
+        }
+        var msg = 'Your bid is $' + price + '. Are you sure?';
+        if (!confirm(msg)) {
+            e.preventDefault();
+        }
+    });
+}());
 //     $(document).ready(function() {
 //         $("#bid_form").validate({
 //             rules: {
