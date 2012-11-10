@@ -10,10 +10,12 @@ BestBay::Application.routes.draw do
   match 'users/activate' => 'users#activate'
   match 'users/deactivate' => 'users#deactivate'
   match 'profile' => 'users#profile'
-  match 'bids/apply_to_cancel' => 'bids#apply_to_cancel'
+  # match 'bids/:id/apply_to_cancel' => 'bids#apply_to_cancel'
   resources :items
   resources :users
-  resources :bids, :except => :new
+  resources :bids, :except => :new do
+    post 'apply_to_cancel'
+  end
   resources :billings
   # resources :user_types
   resources :watch_lists

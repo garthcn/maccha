@@ -44,7 +44,7 @@ class BidsController < ApplicationController
     #   @bid  =  @item.bids.build (params[:bid])
     # end
     respond_to do |format|
-      if  !@bid.nil? && @bid.save
+      if !@bid.nil? && @bid.save
         print " test1 #{@bid.attributes_before_type_cast["created_at"]}"
         print " test2 #{@bid.created_at}"
         format.html { redirect_to @item, notice: 'Bid was successfully created.' }
@@ -97,10 +97,17 @@ class BidsController < ApplicationController
   end
 
   def apply_to_cancel
-    # TODO
-    # respond_to do |format|
-    #   format.html { redirect_to @item, notice: 'Application submitted. Please wait for confirmation.'  }
-    #   format.json { head :no_content }
-    # end
+    @bid = Bid.find(params[:bid_id])
+    @item = @bid.item
+    reason = params[:cancel_reason] || ''
+    respond_to do |format|
+      if @bid.update_attributes(cancel_request: true, cancel_reason: reason)
+        format.html { redirect_to @item, notice: 'Application submitted. Please wait for confirmation.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to @item, notice: 'There was something wrong. Application was not submitted.'  }
+        format.json { head :no_content }
+      end
+    end
   end
 end

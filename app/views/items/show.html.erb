@@ -49,8 +49,13 @@
                   <% if @bid_existing.nil?%>
                     <%= f.submit "Place Bid", class: "bid-btn btn btn-success" %>
                   <%else%>
-                    <%= f.submit "Place Bid", class: "bid-btn btn btn-success" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <%= link_to 'Apply to cancel bid', bids_apply_to_cancel_path, :confirm => "You have to wait until administrators accept it. Are you sure?", :class => 'cancel-bid' %>
+                    <% if @bid_existing.cancel_request %>
+                      <%= f.submit "Place Bid", class: "bid-btn btn btn-success", disabled: 'disabled' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <span class="cancel-bid">Your cancel request is pending.</span>
+                    <% else %>
+                      <%= f.submit "Place Bid", class: "bid-btn btn btn-success" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <a href="#cancel-bid" class="cancel-bid" data-toggle="modal">Request to cancel bid</a>
+                    <% end %>
                     <p>You last bid: <%= @bid_existing.price %></p>
                   <%end%>
                 </div>
@@ -106,6 +111,30 @@
     </div>
   </div>
 </div>
+
+<% if not @bid_existing.nil? %>
+<div id="cancel-bid" class="cancel-dlg modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Cancel Request</h3>
+  </div>
+  <form method="post" action="<%= url_for :controller => "bids", :action => "apply_to_cancel", :bid_id => @bid_existing %>">
+    <input name="authenticity_token" value="<%=form_authenticity_token %>" type="hidden"> 
+    <div class="control-group">
+      <div class="controls">
+        <label for="cancel-reason">Reason for cancelling your bid</label>
+        <textarea id="cancel-reason" name="cancel_reason"></textarea>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <input type="submit" value="Submit" class="btn btn-inverse">
+        <a class="btn" data-dismiss="modal" aria-hidden="true">Cancel</a>
+      </div>
+    </div>
+  </form>
+</div>
+<% end %>
 
 <script type="text/javascript">
 (function() {
