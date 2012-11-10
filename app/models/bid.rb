@@ -15,6 +15,10 @@
 
 class Bid < ActiveRecord::Base
   attr_accessible :price, :buyer_id, :item_id, :seller_id, :created_at, :updated_at
+
+  belongs_to :user
+  belongs_to :item
+
   validates :price,
             :presence => true,
             :numericality => { :greater_than =>0, :less_than => 99999999 }

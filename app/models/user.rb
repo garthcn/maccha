@@ -20,6 +20,7 @@
 #  unconfirmed_email      :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  request_to_leave       :integer
 #
 
 class User < ActiveRecord::Base
@@ -32,7 +33,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name
   # attr_accessible :title, :body
-  has_many :items
+  
   validates_uniqueness_of :email, 
     :case_sensitive => false, 
     :allow_blank => false, 
@@ -48,10 +49,13 @@ class User < ActiveRecord::Base
   validates_length_of :password, 
     :within => 6..128
 
+  has_many :items
+  has_many :bids
+  has_many :transactions
+  has_many :watch_lists
+
   has_one :user_type
   has_one :billing
-	has_many :items
-  has_many :watch_lists
 
   def watching?(item)
     self.watch_lists.find_by_item_id(item.id)

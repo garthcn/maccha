@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121107164716) do
+ActiveRecord::Schema.define(:version => 20121107171538) do
 
   create_table "bids", :force => true do |t|
     t.integer  "seller_id"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(:version => 20121107164716) do
     t.string   "unconfirmed_email"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.integer  "request_to_leave"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

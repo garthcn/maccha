@@ -20,6 +20,7 @@
 #  unconfirmed_email      :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  request_to_leave       :integer
 #
 
 require 'spec_helper'
