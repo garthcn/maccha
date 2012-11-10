@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.7'
 gem 'bootstrap-sass'
 gem 'paperclip'
-
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 #suggested gems by Todd
 gem 'factory_girl_rails' 
 gem 'rspec-rails'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121107171538) do
+ActiveRecord::Schema.define(:version => 20121110171960) do
 
   create_table "bids", :force => true do |t|
     t.integer  "seller_id"
@@ -52,6 +52,19 @@ ActiveRecord::Schema.define(:version => 20121107171538) do
     t.datetime "picture_updated_at"
   end
 
+  create_table "rails_admin_histories", :force => true do |t|
+    t.text     "message"
+    t.string   "username"
+    t.integer  "item"
+    t.string   "table"
+    t.integer  "month",      :limit => 2
+    t.integer  "year",       :limit => 5
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
   create_table "transactions", :force => true do |t|
     t.integer  "seller_id"
     t.integer  "buyer_id"
@@ -90,7 +103,6 @@ ActiveRecord::Schema.define(:version => 20121107171538) do
     t.string   "unconfirmed_email"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.integer  "request_to_leave"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
