@@ -23,10 +23,12 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
 
 		if user_signed_in?
-			@bid= Bid.find_by_item_id_and_buyer_id(@item.id,current_user.id)
-			if @bid.nil?
-				@bid = @item.bids.build
-			end
+			#create new bid entry regardless of whether
+			#the buyer have already bid or not
+			@bid = @item.bids.build
+
+			#search the buyer's previous bid
+			@bid_existing = Bid.user_highest_bid(@item.id,current_user.id)
 		end
 
     respond_to do |format|

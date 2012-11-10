@@ -26,4 +26,8 @@ class Bid < ActiveRecord::Base
 	def larger?(new_price)
 	  new_price > self.price
 	end
+
+	def self.user_highest_bid(item_id, user_id)
+		self.order("price DESC").find_all_by_item_id_and_buyer_id(item_id,user_id).first
+	end
 end
