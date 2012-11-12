@@ -7,8 +7,8 @@ BestBay::Application.routes.draw do
 
   match 'search' => 'items#search'
   match 'plans' => 'users#plans'
-  match 'users/activate' => 'users#activate'
-  match 'users/deactivate' => 'users#deactivate'
+  match 'users/activate_type' => 'users#activate_type'
+  match 'users/deactivate_type' => 'users#deactivate_type'
   match 'profile' => 'users#profile'
   # match 'bids/:id/apply_to_cancel' => 'bids#apply_to_cancel'
   resources :items

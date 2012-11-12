@@ -53,14 +53,14 @@ class UsersController < ApplicationController
     @buyer_type = @user_type ? buyer_plans[@user_type.buyer_type][:name] : 'default'
   end
 
-  def activate
+  def activate_type
     buyer_type = params[:buyer_type]
     seller_type = params[:seller_type]
     # @b = Bid.new(params)
     # @b.save
   end
 
-  def deactivate
+  def deactivate_type
     if user_signed_in?
       uid = current_user.id
       prms = {user_id: uid}
