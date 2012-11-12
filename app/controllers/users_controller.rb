@@ -45,6 +45,7 @@ class UsersController < ApplicationController
     
   def show
     @user = User.find_by_id(params[:id]) || not_found
+    @user_billing = @user.billing
     @user_bids = @user.bids
     @user_transactions = @user.transactions
     @user_type = UserType.find_by_user_id(params[:id])

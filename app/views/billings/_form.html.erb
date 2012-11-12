@@ -1,0 +1,51 @@
+<% @user_billing ||= Billing.new %>
+<div id="billing" class="billing-dlg modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Billing Information</h3>
+  </div>
+  <%= form_for(@user_billing) do |form| %>
+    <div class="modal-body">
+      <div class="plan">
+        Adding Billing Info
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="billing_cc">Credit Card</label>
+        <div class="controls">
+          <%= form.text_field :credit_card %>
+          <span class="help-inline"></span>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="billing_paypal">PayPal</label>
+        <div class="controls">
+          <%= form.email_field :paypal %>
+          <span class="help-inline"></span>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="billing_addr">Billing Address</label>
+        <div class="controls">
+          <%= form.text_field :billing_addr %>
+          <span class="help-inline"></span>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="shipping_addr">Shipping Address</label>
+        <div class="controls">
+          <%= form.text_field :shipping_addr %>
+          <span class="help-inline"></span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <span>Is this information correct?</span>
+      <input type="submit" class="btn btn-success" value="OK">
+      <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+    </div>
+  <% end %>
+</div>

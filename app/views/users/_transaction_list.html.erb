@@ -5,15 +5,15 @@
   <table class="table">
     <thead>
       <tr>
-        <td>
+        <th>
           Item
-        </td>
-        <td>
+        </th>
+        <th>
           Price
-        </td>
-        <td>
-          Status
-        </td>
+        </th>
+        <th>
+          Shipped?
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -26,7 +26,7 @@
           <%= transaction.price %>
         </td>
         <td>
-          <%= transaction.is_shipped %>
+          <%= transaction.is_shipped ? 'Yes' : 'No' %>
         </td>
       </tr>
     <% end %>

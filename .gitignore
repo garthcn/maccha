@@ -23,7 +23,7 @@ coverage/*
 doc/coverage/*
 *DS_Store
 .rspec
-*.swp
+*.sw?
 *.temp
 *.rbc
 *.sassc

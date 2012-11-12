@@ -7,7 +7,15 @@
       });
 
       $('.timepicker').timepicker();
+      Item.bindBuyBtn();
+    },
+
+    bindBuyBtn: function() {
+      $('#buyitnow').click(function(e) {
+        $('#billing').modal('show');
+      });
     }
+          
   }
   $(document).ready(Item.init);
 

@@ -1,0 +1,25 @@
+<div class="user-billing">
+  <table class="table">
+    <tbody>
+      <tr>
+        <th class="">Credit Card</th>
+        <td class=""><%= @user_billing.credit_card %></td>
+      </tr>
+      <tr>
+        <th class="">Paypal</th>
+        <td class=""><%= @user_billing.paypal %></td>
+      </tr>
+      <tr>
+        <th class="">Billing Address</th>
+        <td class=""><%= @user_billing.billing_addr %></td>
+      </tr>
+      <tr>
+        <th class="">Shipping Address</th>
+        <td class=""><%= @user_billing.shipping_addr %></td>
+      </tr>
+    </tbody>
+  </table>
+  <a href="#billing" class="btn activate" data-toggle="modal">
+    Edit Billing Info
+  </a>
+</div>

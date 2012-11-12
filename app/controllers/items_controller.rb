@@ -20,6 +20,7 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+    @transaction = Transaction.new
     @item = Item.find(params[:id])
 
 		if user_signed_in?

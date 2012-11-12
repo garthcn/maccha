@@ -18,6 +18,9 @@
       <% if alert %>
         <div class="alert"><%= alert %></div>
       <% end %>
+      <% if flash[:success] %>
+        <div class="alert alert-success"><%= flash[:success] %></div>
+      <% end %>
       <%= yield %>
       </div>
     </div>

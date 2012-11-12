@@ -67,10 +67,7 @@
               <em>$ <%= sprintf("%.2f", 123.45) %></em>
             </p>
             <% if user_signed_in? %>
-              <p class="curr buyitnow-btn">
-                <span class="leftcol"></span>
-                <a href="#" id="buyitnow" class="btn btn-success" title="">Buy It Now!</a>
-              </p>
+              <%= render 'items/buy_button' %>
             <% end %>
           <%else%>
             <strong>Bid end at: </strong><%= @item.end_time%>
@@ -187,6 +184,3 @@
 //         });
 //     });
 </script>
-
-
-<!-- -->

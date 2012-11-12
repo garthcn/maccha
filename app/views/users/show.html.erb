@@ -37,6 +37,18 @@
     </div>
     <% if current_user && current_user.id.to_s == params[:id] %>
       <div class="user-private">
+        <div class="user-billing">
+          <h3>Billing Info</h3>
+          <div class='well'>
+            <% if @user_billing %>
+              <%= render 'users/billing_info' %>
+            <% else %>
+              <a href="#billing" class="btn activate" data-toggle="modal">
+                Add Billing Info
+              </a>
+            <% end %>
+          </div>
+        </div>
         <div class="user-bids">
           <h3>Bids</h3>
           <%= render 'users/bid_list' %>
@@ -52,3 +64,4 @@
     <% end %>
   </div>
 </div>
+<%= render 'billings/form' %>
