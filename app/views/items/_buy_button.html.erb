@@ -3,6 +3,8 @@
   <%= form_tag('/transactions', :method => 'post') do %>
     <%= hidden_field_tag 'item_id', @item.id %>
     <%= hidden_field_tag 'seller_id', @item.seller_id %>
-    <%= submit_tag 'One-click Buy', :class => 'btn btn-success' %>
+    <%= submit_tag 'One-click Buy', 
+      :data => { :confirm => 'Buy this item?' }, 
+      :class => 'btn btn-success' %>
   <% end %>
 </div>
