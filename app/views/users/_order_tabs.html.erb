@@ -1,0 +1,23 @@
+<ul class="nav nav-tabs" id="myTab">
+  <li class="active"><a href="#buyer-tab">Buyer</a></li>
+  <li><a href="#seller-tab">Seller</a></li>
+</ul>
+ 
+<div class="tab-content">
+  <div class="tab-pane active" id="buyer-tab">
+    <div class="user-bids">
+      <h4>Bids</h4>
+      <%= render 'users/bid_list' %>
+    </div>
+    <div class="user-transactions">
+      <h4>Transactions</h4>
+      <%= render 'users/transaction_list' %>
+    </div>
+  </div>
+  <div class="tab-pane" id="seller-tab">
+    <div class="user-items-for-sale">
+      <h4>Items for Sale</h4>
+      <%= render 'users/seller_item_list' %>
+    </div>
+  </div>
+</div>

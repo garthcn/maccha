@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
   end
 
   def plans
@@ -49,6 +48,8 @@ class UsersController < ApplicationController
     @user_billing = @user.billing
     @user_bids = @user.bids
     @user_transactions = @user.transactions
+    @user_items_for_sale = @user.items_for_sale
+
     @user_type = UserType.find_by_user_id(params[:id])
     @seller_type = @user_type ? seller_plans[@user_type.seller_type][:name] : 'default'
     @buyer_type = @user_type ? buyer_plans[@user_type.buyer_type][:name] : 'default'

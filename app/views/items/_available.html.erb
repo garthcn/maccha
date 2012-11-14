@@ -1,0 +1,52 @@
+<div class="price">
+  <p class="curr">
+    <span class="leftcol">Current Price: </span>
+    <em class="rightcol"><%= sprintf("%.2f", max_price) %></em>
+  </p>
+  <%if Time.now<@item.end_time%>
+    <p class="countdown">
+      <span class="leftcol">Bid starts at: </span>
+      <em class="rightcol"><%= @item.start_time%></em>
+    </p>
+    <p class="countdown">
+      <span class="leftcol">Bid ends at: </span>
+      <em class="rightcol"><%= @item.end_time%></em>
+    </p>
+    <% if user_signed_in? %>
+      <%=form_for(@bid, :url => bids_path, :method => :post, :builder => Judge::FormBuilder, :html => {:class => 'bid-form form-inline'}) do |f| %>
+        <div class="field">
+          <span class="leftcol">
+            <%=f.text_field :price, :min => max_price, :validate => true, :as => :float, :class => 'input-small'%>
+          </span>
+          <%= f.hidden_field :item_id,{:value => @item.id} %>
+          <%= f.hidden_field :seller_id, {:value => @item.seller_id} %>
+          <%= f.hidden_field :buyer_id, {:value => current_user.id} %>
+          <!--% if @bid.price > @item.price%  , :data => { :confirm => "Bid placed successfully!"}-->
+          <!--% @bid_existing=Bid.find_by_item_id_and_buyer_id(@item.id,current_user.id) %-->
+          <% if @bid_existing.nil?%>
+            <%= f.submit "Place Bid", class: "bid-btn btn btn-success" %>
+          <%else%>
+            <% if @bid_existing.cancel_request %>
+              <%= f.submit "Place Bid", class: "bid-btn btn btn-success", disabled: 'disabled' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <span class="cancel-bid">Your cancel request is pending.</span>
+            <% else %>
+              <%= f.submit "Place Bid", class: "bid-btn btn btn-success" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="#cancel-bid" class="cancel-bid" data-toggle="modal">Request to cancel bid</a>
+            <% end %>
+            <p>You last bid: <%= @bid_existing.price %></p>
+          <%end%>
+        </div>
+      <% end %>
+    <% end %>
+
+    <p class="curr buyitnow">
+      <span class="leftcol">Buy It Now Price: </span>
+      <em>$ <%= sprintf("%.2f", 123.45) %></em>
+    </p>
+    <% if user_signed_in? %>
+      <%= render 'items/buy_button' %>
+    <% end %>
+  <%else%>
+    <strong>Bid end at: </strong><%= @item.end_time%>
+  <%end%>
+</div>

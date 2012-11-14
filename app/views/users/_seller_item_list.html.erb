@@ -1,6 +1,6 @@
 <div>
-<% if @user_transactions.empty? %>
-  <span>No Transactions found.</span>
+<% if @user_items_for_sale.empty? %>
+  <span>No items for sale.</span>
 <% else %>
   <table class="table">
     <thead>
@@ -12,21 +12,21 @@
           Price
         </th>
         <th>
-          Shipped?
+          Status
         </th>
       </tr>
     </thead>
     <tbody>
-    <% @user_transactions.each do |transaction| %>
+    <% @user_items_for_sale.each do |item| %>
       <tr>
         <td>
-          <%= transaction.item.name %>
+          <%= item.name %>
         </td>
         <td>
-          <%= transaction.price %>
+          <%= item.price %>
         </td>
         <td>
-          <%= transaction.is_shipped ? 'Yes' : 'No' %>
+          <%= item.is_sold ? 'Sold' : 'On Sale' %>
         </td>
       </tr>
     <% end %>
@@ -34,4 +34,3 @@
   </table>
 <% end %>
 </div>
-

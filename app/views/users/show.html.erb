@@ -47,13 +47,11 @@
               </a>
             <% end %>
         </div>
-        <div class="user-bids">
-          <h3>Bids</h3>
-          <%= render 'users/bid_list' %>
-        </div>
-        <div class="user-transactions">
-          <h3>Transactions</h3>
-          <%= render 'users/transaction_list' %>
+        <div class="order-tab">
+          <h3>Order Info</h3>
+          <div class="order-tab-container">
+            <%= render 'users/order_tabs' %>
+          </div>
         </div>
         <div class="user-account-action">
           <%= link_to "Edit account", edit_user_registration_path(current_user), :class => 'btn', :method => :get %>

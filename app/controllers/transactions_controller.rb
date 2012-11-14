@@ -13,6 +13,8 @@ class TransactionsController < ApplicationController
 
     if @transaction.save
       flash[:success] = 'You have bought the item.'
+      @item.is_sold = true
+      @item.save
     else
       flash[:alert] = 'Transaction rejected.'
     end

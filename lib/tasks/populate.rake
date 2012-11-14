@@ -27,6 +27,7 @@ namespace :db do
       item.condition    = Faker::Lorem.words(1)
       item.location     = Faker::Address.city
       item.description  = Faker::Lorem.sentences(5)
+      item.seller_id    = 3
     end
   end
 end

@@ -60,5 +60,9 @@ class User < ActiveRecord::Base
   def watching?(item)
     self.watch_lists.find_by_item_id(item.id)
   end
+
+  def items_for_sale
+    Item.find(:all, :conditions => { :seller_id => self.id })
+  end
   
 end
