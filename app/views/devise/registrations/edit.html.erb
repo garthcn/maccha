@@ -38,12 +38,42 @@
 
       <div class='control-group'>
         <div class='controls'>
-          <%= f.submit "Update", class: 'btn' %>
+          <% if current_user.cancel_request %>
+            <%= f.submit "Update", class: 'btn', disabled: 'disabled' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="cancel-bid">Your cancel request is pending.</span>
+          <% else %>
+            <%= f.submit "Update", class: 'btn' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="#cancel-user" class="cancel-req" data-toggle="modal">Request to delete account</a>
+          <% end %>
         </div>
       </div>
     <% end %>
-
-    <legend>Danger Zone!</legend>
-    <%= link_to "Delete account", registration_path(resource_name), :class => 'btn btn-danger', :data => { :confirm => "Are you sure?" }, :method => :delete %>
   </div>
+</div>
+
+<div id="cancel-user" class="cancel-dlg modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Cancel Request</h3>
+  </div>
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+    <%= f.hidden_field :cancel_request, {:value => true} %>
+
+    <div class='control-group'>
+      <%= f.label :reason_for_canceling_account, class: 'control-label' %>
+      <div class='controls'>
+        <%= f.text_area :cancel_reason, :class => 'span5' %>
+      </div>
+    </div>
+
+    <div class='control-group'>
+      <%= f.label :current_password, class: 'control-label' %>
+      <div class='controls'>
+        <%= f.password_field :current_password, :autocomplete => "off", :class => 'span5' %>
+      </div>
+    </div>
+
+    <%= f.submit "Submit request", class: 'btn btn-inverse' %>
+    <a class="btn" data-dismiss="modal" aria-hidden="true">Cancel</a>
+  <% end %>
 </div>

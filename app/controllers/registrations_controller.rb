@@ -14,5 +14,5 @@ class RegistrationsController < Devise::RegistrationsController
     else
       render "edit"
     end
-  end
+	end
 end

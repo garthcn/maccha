@@ -31,4 +31,19 @@ class Bid < ActiveRecord::Base
 	def self.user_highest_bid(item_id, user_id)
 		self.order("price DESC").find_all_by_item_id_and_buyer_id(item_id,user_id).first
 	end
+
+	def apply_to_cancel_account
+    @bid = Bid.find(params[:bid_id])
+    @item = @bid.item
+    reason = params[:cancel_reason] || ''
+    respond_to do |format|
+      if @bid.update_attributes(cancel_request: true, cancel_reason: reason)
+        format.html { redirect_to @item, notice: 'Application submitted. Please wait for confirmation.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to @item, notice: 'There was something wrong. Application was not submitted.'  }
+        format.json { head :no_content }
+      end
+    end
+  end
 end

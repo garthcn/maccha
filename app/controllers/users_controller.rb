@@ -141,5 +141,21 @@ class UsersController < ApplicationController
         format.json { render json: {code: "10", message: 'You need to sign in.'}, status: :ok }
       end
     end
+	end
+
+	def apply_to_cancel
+		@user = User.find(current_user.id)
+    reason = params[:cancel_reason] || ''
+    respond_to do |format|
+
+
+      if @user.update_with_password({cancel_request: true, cancel_reason: reason})
+        format.html { redirect_to edit_user_registration_path, notice: 'Application submitted. Please wait for confirmation.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to edit_user_registration_path, notice: 'There was something wrong. Application was not submitted.'  }
+        format.json { head :no_content }
+      end
+    end
   end
 end
