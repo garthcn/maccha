@@ -17,12 +17,18 @@
                 <td class=""><%= @user.created_at.to_date.to_s %></td>
               </tr>
               <tr>
-                <th class="">Buyer Type</th>
-                <td class=""><%= @buyer_type.to_s.titleize %></td>
+                <th class="">Buyer Plan</th>
+                <td class="">
+                  <%= @buyer_type.to_s.titleize %>
+                  <span class="small">(<a href="<%= plans_path %>" title="Change Plan">Change Plan</a>)</span>
+                </td>
               </tr>
               <tr>
-                <th class="">Seller Type</th>
-                <td class=""><%= @seller_type.to_s.titleize %></td>
+                <th class="">Seller Plan</th>
+                <td class="">
+                  <%= @seller_type.to_s.titleize %>
+                  <span class="small">(<a href="<%= plans_path %>" title="Change Plan">Change Plan</a>)</span>
+                </td>
               </tr>
             </tbody>
           </table>

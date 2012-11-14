@@ -24,13 +24,13 @@ class ApplicationController < ActionController::Base
   def seller_plans
     @seller_plans ||= [
       {name: "No Plan", price: 0,
-        features: ["Feature a", "Feature b", "Feature c"]},
+        features: ["1 week bids", "1 pictures for upload", "No ads"]},
       {name: "Maccha Bronze", price: 15,
-        features: ["Feature 1", "Feature 2", "Feature 3"]},
+        features: ["1 week bids", "2 pictures for upload", "No ads"]},
       {name: "Maccha Silver", price: 25,
-        features: ["Feature 4", "Feature 5", "Feature 6"]},
+        features: ["2 week bids", "4 pictures for upload", "1 ad every month"]},
       {name: "Maccha Gold", price: 40,
-        features: ["Feature 7", "Feature 8", "Feature 9"]}
+        features: ["4 week bids", "10 pictures for upload", "1 ad every week"]}
     ]
   end
 end
