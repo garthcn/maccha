@@ -14,9 +14,9 @@
           <div class="user-menu">
             <a href="#" class="dropdown-toggle action"><%= current_user.name %><span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a tabindex="-1" href="/profile">Account</a></li>
+              <li><a tabindex="-1" href="<%= profile_path %>">Account</a></li>
               <li><a tabindex="-1" href="#">Orders</a></li>
-              <li><a tabindex="-1" href="/watch_lists">Watchlist</a></li>
+              <li><a tabindex="-1" href="<%= watch_lists_path %>">Watchlist</a></li>
               <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
             </ul>
           </div>

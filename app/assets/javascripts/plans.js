@@ -4,18 +4,18 @@ $(document).ready(function() {
     $buyerType = $('#buyer_type'),
     $sellerType = $('#seller_type');
 
-  $('.plans').delegate('.activate', 'click', function(e) {
-    var $this = $(this), name = $this.data('name'),
-      btype = $this.data('btype'), stype = $this.data('stype');
-    $planName.text(name);
-    if (btype) {
-      $buyerType.val(btype);
-      $sellerType.val(0);
-    }
-    if (stype) {
-      $buyerType.val(0);
-      $sellerType.val(stype);
-    }
-  });
+  // $('.plans').delegate('.activate', 'click', function(e) {
+  //   var $this = $(this), name = $this.data('name'),
+  //     btype = $this.data('btype'), stype = $this.data('stype');
+  //   $planName.text(name);
+  //   if (btype) {
+  //     $buyerType.val(btype);
+  //     $sellerType.val(0);
+  //   }
+  //   if (stype) {
+  //     $buyerType.val(0);
+  //     $sellerType.val(stype);
+  //   }
+  // });
 });
 

@@ -12,7 +12,7 @@
         <% end %>
         </ul>
         <% if @buyer_type > 0 %>
-        <p class="actions"><a href="<%= users_activate_type_path + '?buyer_type=' + @buyer_type.to_s %>" class="btn deactivate">Deactivate</a></p>
+        <p class="actions"><a href="<%= users_deactivate_type_path + '?buyer_type=' + @buyer_type.to_s %>" class="btn deactivate">Deactivate</a></p>
         <% end %>
       </div>
       <div class="plan-box seller pull-left">
@@ -58,8 +58,13 @@
             <% end %>
           </ul>
           <p class="actions">
-          <a href="#billing" class="btn activate" data-toggle="modal"
-            data-btype="<%= i %>" data-name="<%= p[:name] %>">Activate</a>
+          <% if not @no_billing %>
+            <a href="<%= users_activate_type_path + '?buyer_type=' + i.to_s %>"
+              class="btn activate" data-toggle="modal"
+              data-btype="<%= i %>" data-name="<%= p[:name] %>">Activate</a>
+          <% else %>
+            <a href="#billing" class="btn activate" data-toggle="modal">Activate</a>
+          <% end %>
           </p>
         </div>
       <% end %>
@@ -77,8 +82,13 @@
             <% end %>
           </ul>
           <p class="actions">
-          <a href="#billing" class="btn activate" data-toggle="modal"
-            data-stype="<%= i %>" data-name="<%= p[:name] %>">Activate</a>
+          <% if not @no_billing %>
+            <a href="<%= users_activate_type_path + '?seller_type=' + i.to_s %>"
+              class="btn activate" data-toggle="modal"
+              data-stype="<%= i %>" data-name="<%= p[:name] %>">Activate</a>
+          <% else %>
+            <a href="#billing" class="btn activate" data-toggle="modal">Activate</a>
+          <% end %>
           </p>
         </div>
       <% end %>
@@ -90,5 +100,27 @@
     -->
   </div>
 </div>
+
+
+<div id="billing" class="billing-dlg modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>No Billing Information</h3>
+  </div>
+  <div class="modal-body">
+    <div class="plan">
+      You don't have billing information now.<br>
+      Please go to your 
+      <a href="<%= profile_path %>" title="Account Page"><strong>Account Page</strong></a>
+      to add billing information.
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+  </div>
+</div>
+
+<!--
 <%= render 'shared/billing_form' %>
+-->
 
