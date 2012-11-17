@@ -16,6 +16,7 @@ scheduler.cron '01 00 * * 1-7' do
   @bids=Bid.where(" expired_at <= :end_date", {:end_date =>Time.now})
   @bids.each do |bid|
     bid.status=2
+    bid.save
   end
 end
 
