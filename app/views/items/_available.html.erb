@@ -6,11 +6,11 @@
   <%if Time.now<@item.end_time%>
     <p class="countdown">
       <span class="leftcol">Bid starts at: </span>
-      <em class="rightcol"><%= @item.start_time%></em>
+      <em class="rightcol"><%= @item.start_time.strftime('%F %I:%M:%S %p')%></em>
     </p>
     <p class="countdown">
       <span class="leftcol">Bid ends at: </span>
-      <em class="rightcol"><%= @item.end_time%></em>
+      <em class="rightcol"><%= @item.end_time.strftime('%F %I:%M:%S %p')%></em>
     </p>
 	
 	<p>

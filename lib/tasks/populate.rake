@@ -21,8 +21,8 @@ namespace :db do
     Item.populate 50 do |item|
       item.name         = Faker::Lorem.words(3)
       item.price        = 199
-      item.start_time   = Date.today
-      item.end_time     = Date.tomorrow
+      item.start_time   = DateTime.now
+      item.end_time     = DateTime.now + 1.day
       item.category     = Faker::Lorem.words(2)
       item.condition    = Faker::Lorem.words(1)
       item.location     = Faker::Address.city
