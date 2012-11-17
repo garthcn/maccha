@@ -55,6 +55,13 @@
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
     <h3>Cancel Request</h3>
+    [Warning] Your request cannot be processed until you satisfy these conditions:
+    <ul>
+      <li>You are not selling any items currently (All items that you are selling have been bought)</li>
+      <li>You are not bidding on a current auction</li>
+      <li>You do not have any pending transactions (You have paid for all items you won in a bid)</li>
+    </ul>
+    If you are selling an item, bidding in an auction, or have pending transactions, your request will not be processed.
   </div>
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
     <%= f.hidden_field :cancel_request, {:value => true} %>
@@ -62,7 +69,7 @@
     <div class='control-group'>
       <%= f.label :reason_for_canceling_account, class: 'control-label' %>
       <div class='controls'>
-        <%= f.text_area :cancel_reason, :class => 'span5' %>
+        <%= f.text_area :cancel_reason, :class => 'cancel-reason-text'%>
       </div>
     </div>
 
@@ -70,6 +77,14 @@
       <%= f.label :current_password, class: 'control-label' %>
       <div class='controls'>
         <%= f.password_field :current_password, :autocomplete => "off", :class => 'span5' %>
+      </div>
+    </div>
+
+    <div class='control-group'>
+      <%= f.label :understanding_conditions, class: 'control-label' %>
+      I request to delete my account understanding Maccha's policy of deleting my account.
+      <div class='controls'>
+        <%= f.check_box :delete_request_agree, :autocomplete => "off" %>
       </div>
     </div>
 

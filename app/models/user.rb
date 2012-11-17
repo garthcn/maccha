@@ -49,6 +49,7 @@ class User < ActiveRecord::Base
     :on => :create
   validates_length_of :password, 
     :within => 6..128
+	validates_acceptance_of :delete_request_agree
 
   has_many :items , :foreign_key => 'seller_id'
   has_many :bids, :foreign_key => 'buyer_id'

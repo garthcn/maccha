@@ -7,7 +7,10 @@
   color: #666;
   text-decoration: underline;
 }
-.cancel-bid {
+.cancel-reason-text {
+  width:500px;
+  height:200px ;
+}.cancel-bid {
   color: #666;
   font-size: 12px;
 }
