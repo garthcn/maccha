@@ -1,10 +1,17 @@
-<div class="curr buyitnow-btn">
-  <span class="leftcol"></span>
-  <%= form_tag('/transactions', :method => 'post') do %>
-    <%= hidden_field_tag 'item_id', @item.id %>
-    <%= hidden_field_tag 'seller_id', @item.seller_id %>
-    <%= submit_tag 'One-click Buy', 
-      :data => { :confirm => 'Buy this item?' }, 
-      :class => 'btn btn-success' %>
-  <% end %>
-</div>
+<p class="curr buyitnow">
+  <span class="leftcol">Buy It Now Price: </span>
+  <em><%= number_to_currency 1234.56 %></em>
+</p>
+<% if user_signed_in? %>
+  <div class="curr buyitnow-btn">
+    <span class="leftcol"></span>
+    <%= form_tag('/transactions', :method => 'post') do %>
+      <%= hidden_field_tag 'item_id', @item.id %>
+      <%= hidden_field_tag 'seller_id', @item.seller_id %>
+      <%= submit_tag 'One-click Buy', 
+        :data => { :confirm => 'Buy this item?' }, 
+        :class => 'btn btn-success' %>
+    <% end %>
+  </div>
+<% end %>
+

@@ -1,7 +1,9 @@
 <div class="price">
   <p class="curr">
+    <!--
     <span class="leftcol">Current Price: </span>
     <em class="rightcol"><%= number_to_currency max_price %></em>
+    -->
   </p>
   <%if Time.now<@item.end_time%>
     <p class="countdown">
@@ -45,13 +47,9 @@
       <% end %>
     <% end %>
 
-    <p class="curr buyitnow">
-      <span class="leftcol">Buy It Now Price: </span>
-      <em><%= number_to_currency 1234.56 %></em>
-    </p>
-    <% if user_signed_in? %>
-      <%= render 'items/buy_button' %>
-    <% end %>
+    <div class='buyitnow-container'>
+
+    </div>
   <%else%>
     <strong>Bid end at: </strong><%= @item.end_time%>
   <%end%>
