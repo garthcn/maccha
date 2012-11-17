@@ -47,7 +47,7 @@
 
     <p class="curr buyitnow">
       <span class="leftcol">Buy It Now Price: </span>
-      <em>$ <%= sprintf("%.2f", 123.45) %></em>
+      <em><%= number_to_currency 1234.56 %></em>
     </p>
     <% if user_signed_in? %>
       <%= render 'items/buy_button' %>

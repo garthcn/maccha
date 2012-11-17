@@ -7,6 +7,11 @@
     <% else %>
       <ul class="clearfix">
         <% @items.each do |item| %>
+          <% if item.bids and item.bids.maximum(:price) %>
+            <% max_price = item.bids.maximum(:price) %>
+          <% else %>
+            <% max_price = item.price %>
+          <% end %>
           <li class="item-grid">
             <a href="<%= url_for item %>" title="View item">
               <div class="item-img">
@@ -14,7 +19,7 @@
               </div>
               <div class="item-info">
                 <p class="name"><%= item.name %></p>
-                <p class="price"><%= sprintf("%.2f", item.price) %></p>
+                <p class="price"><%= number_to_currency max_price %></p>
               </div>
             </a>
           </li>
