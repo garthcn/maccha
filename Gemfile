@@ -17,6 +17,7 @@ gem 'capybara'
 gem 'devise' 
 #gem 'ruby-debug19'
 gem "judge"
+gem 'rufus-scheduler'
 group :development, :test do
    gem 'sqlite3'
    gem 'populator'

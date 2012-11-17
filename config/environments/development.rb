@@ -49,8 +49,8 @@ BestBay::Application.configure do
       :domain => "gmail.com",
       :authentication => "plain",
       :enable_starttls_auto => true,
-      :user_name => "liyingCmu@gmail.com",
-      :password => "0814Cmu$"
+      :user_name => "macchacmu@gmail.com",
+      :password => "2012maccha"
   }
 
   Paperclip.options[:command_path] = "/usr/local/bin/"

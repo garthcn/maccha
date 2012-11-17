@@ -26,7 +26,11 @@
           <%= bid.price %>
         </td>
         <td>
-          <%= bid.status %>
+          <% if bid.status==1 %>
+              <%= "pending" %>
+              <% elsif bid.status==2 %>
+              <%= "end" %>
+              <%end%>
         </td>
       </tr>
     <% end %>
