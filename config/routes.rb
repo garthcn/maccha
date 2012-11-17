@@ -11,7 +11,9 @@ BestBay::Application.routes.draw do
   match 'users/deactivate_type' => 'users#deactivate_type'
   match 'profile' => 'users#profile'
   # match 'bids/:id/apply_to_cancel' => 'bids#apply_to_cancel'
-  resources :items
+  resources :items do 
+    post 'apply_to_delete'
+  end
   resources :users
   resources :bids, :except => :new do
     post 'apply_to_cancel'

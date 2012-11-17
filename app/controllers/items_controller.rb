@@ -115,15 +115,28 @@ class ItemsController < ApplicationController
     end
   end
 
-  # DELETE /items/1
-  # DELETE /items/1.json
-  def destroy
+  def apply_to_delete
     @item = Item.find(params[:id])
-    @item.destroy
-
+    reason = params[:cancel_reason] || ''
     respond_to do |format|
-      format.html { redirect_to items_url }
-      format.json { head :no_content }
+      if @item.update_attributes(delete_request: true, delete_reason: reason)
+        format.html { redirect_to @item, notice: 'Application submitted. Please wait for confirmation.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to @item, notice: 'There was something wrong. Application was not submitted.'  }
+        format.json { head :no_content }
+      end
     end
   end
+
+  # DELETE /items/1
+  # DELETE /items/1.json
+  # def destroy
+  #   @item = Item.find(params[:id])
+  #   @item.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to items_url }
+  #     format.json { head :no_content }
+  #   end
+  # end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121117201046) do
+ActiveRecord::Schema.define(:version => 20121117203917) do
 
   create_table "bids", :force => true do |t|
     t.integer  "seller_id"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(:version => 20121117201046) do
     t.datetime "picture_updated_at"
     t.boolean  "is_sold"
     t.boolean  "is_deleted"
+    t.boolean  "delete_request"
+    t.text     "delete_reason"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
@@ -107,7 +109,6 @@ ActiveRecord::Schema.define(:version => 20121117201046) do
     t.string   "unconfirmed_email"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.integer  "request_to_leave"
     t.boolean  "cancel_request"
     t.text     "cancel_reason"
   end

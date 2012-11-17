@@ -23,6 +23,7 @@
 class Item < ActiveRecord::Base
   attr_accessible :category, :condition, :description, :location, :name, :price, :seller_id 
   attr_accessible :start_time, :end_time
+  attr_accessible :delete_request, :delete_reason
 
   has_many :bids
   has_many :transactions
