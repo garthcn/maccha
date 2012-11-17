@@ -1,7 +1,7 @@
 <div class="price">
   <p class="curr">
     <span class="leftcol">Current Price: </span>
-    <em class="rightcol"><%= sprintf("%.2f", max_price) %></em>
+    <em class="rightcol"><%= number_to_currency max_price %></em>
   </p>
   <%if Time.now<@item.end_time%>
     <p class="countdown">
@@ -12,6 +12,12 @@
       <span class="leftcol">Bid ends at: </span>
       <em class="rightcol"><%= @item.end_time%></em>
     </p>
+	
+	<p>
+	<div id="jcountdown"></div>
+	</p>
+	
+	
     <% if user_signed_in? %>
       <%=form_for(@bid, :url => bids_path, :method => :post, :builder => Judge::FormBuilder, :html => {:class => 'bid-form form-inline'}) do |f| %>
         <div class="field">
@@ -50,3 +56,16 @@
     <strong>Bid end at: </strong><%= @item.end_time%>
   <%end%>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $("#jcountdown").setCountdown({
+    //Date for the countdown
+    targetDate: "<%= @item.end_time.to_date %>",
+    //Labels for days/hours/minutes/seconds,
+    //[ 'Days', 'Hours', 'Minutes', 'Seconds' ] by default
+    itemLabels: [ 'D', 'H', 'M', 'S' ]
+  });
+});
+
+</script>

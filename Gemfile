@@ -4,6 +4,12 @@ gem 'rails', '3.2.7'
 gem 'bootstrap-sass'
 gem 'paperclip'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+
+#gems for countdown timer
+gem 'jquery-rails'
+gem 'jcountdown-rails', :git => 'http://github.com/rezwyi/jcountdown-rails.git'
+
+
 #suggested gems by Todd
 gem 'factory_girl_rails' 
 gem 'rspec-rails'
