@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(:version => 20121117203917) do
     t.string   "unconfirmed_email"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.integer  "request_to_leave"
     t.boolean  "cancel_request"
     t.text     "cancel_reason"
   end
