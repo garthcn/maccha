@@ -4,12 +4,14 @@
     <em class="rightcol"><%= number_to_currency max_price %></em>
   </p>
   <div class='last-bid' >
+    <% if @bid_existing %>
     <p class="clearfix">
       <span class="leftcol">Your Bid:</span>
       <em class="rightcol">
         <%= number_to_currency @bid_existing.price %>
       </em>
     </p>
+    <% end %>
     <!--
     <a href="#cancel-bid" class="cancel-req" data-toggle="modal">
       Request to cancel bid
