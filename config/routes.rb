@@ -10,18 +10,25 @@ BestBay::Application.routes.draw do
   match 'users/activate_type' => 'users#activate_type'
   match 'users/deactivate_type' => 'users#deactivate_type'
   match 'profile' => 'users#profile'
+
+  # For mobile
+  match 'api/users/:id/transactions' => 'transactions#index'
+  match 'api/users/:id/bids' => 'bids#index'
+  match 'api/users/:id/watch_list' => 'watch_lists#index'
+
+
   # match 'bids/:id/apply_to_cancel' => 'bids#apply_to_cancel'
   resources :items do 
     post 'apply_to_delete'
   end
   resources :users
-  resources :bids, :except => :new do
+  resources :bids, :except => [:index, :new] do
     post 'apply_to_cancel'
   end
   resources :billings
   # resources :user_types
   resources :watch_lists
-  resources :transactions
+  resources :transactions, :only => [ :create ]
 
   root :to => "home#index"
   # match ':controller(/:action(/:id))(.:format)'

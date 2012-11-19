@@ -1,10 +1,16 @@
 class BidsController < ApplicationController
   def index
-    if current_user
-      @user_bids = current_user.bids
-      render 'index'
-    else
-      redirect_to :root
+    #if current_user
+      #@user_bids = current_user.bids
+      #render 'index'
+    #else
+      #redirect_to :root
+    #end
+    user = User.find_by_id(params[:id])
+    @bids = user.bids
+    respond_to do |format|
+      format.xml { render :xml => @bids.to_xml }
+      format.json { render :json => @bids.to_json }
     end
   end
 

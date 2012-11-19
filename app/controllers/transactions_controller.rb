@@ -1,5 +1,15 @@
 class TransactionsController < ApplicationController
 
+  def index
+    user = User.find_by_id(params[:id])
+    @transactions = user.transactions
+    
+    respond_to do |format|
+      format.xml { render :xml => @transactions.to_xml }
+      format.json { render :json => @transactions.to_json }
+    end
+  end
+
   def create
     @item = Item.find_by_id(params[:item_id])
     transaction_params = {
