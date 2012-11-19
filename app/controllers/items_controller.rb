@@ -116,14 +116,33 @@ class ItemsController < ApplicationController
   end
 
   def apply_to_delete
-    @item = Item.find(params[:id])
-    reason = params[:cancel_reason] || ''
+    @item = Item.find(params[:item_id])
+    reason = params[:delete_reason] || ''
     respond_to do |format|
       if @item.update_attributes(delete_request: true, delete_reason: reason)
-        format.html { redirect_to @item, notice: 'Application submitted. Please wait for confirmation.' }
+        format.html { redirect_to @item,
+          notice: 'Application submitted. Please wait for confirmation.' }
         format.json { head :no_content }
       else
-        format.html { redirect_to @item, notice: 'There was something wrong. Application was not submitted.'  }
+        format.html { redirect_to @item,
+          notice: 'There was something wrong. Application was not submitted.' }
+        format.json { head :no_content }
+      end
+    end
+  end
+
+  # for testing
+  def delete_item
+    @item = Item.find(params[:item_id])
+    respond_to do |format|
+      if @item.update_attributes(is_deleted: true, delete_request: false)
+        @item.bids.each do |b|
+          b.update_attributes(status: 101)
+        end
+        format.html { redirect_to @item, notice: 'Item deleted.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to @item, notice: 'Item not deleted.' }
         format.json { head :no_content }
       end
     end

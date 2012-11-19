@@ -20,6 +20,7 @@ BestBay::Application.routes.draw do
   # match 'bids/:id/apply_to_cancel' => 'bids#apply_to_cancel'
   resources :items do 
     post 'apply_to_delete'
+    post 'delete_item'
   end
   resources :users
   resources :bids, :except => [:index, :new] do

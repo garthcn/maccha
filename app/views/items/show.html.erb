@@ -22,10 +22,16 @@
           <% max_price = @item.price %>
         <% end %>
 
-        <% if !@item.is_sold %>
-          <%= render :partial => 'items/available', :locals => {:max_price => max_price} %>
+        <% if @item.is_deleted %>
+          <div class="price">
+            <h3>Item is deleted.</h3>
+          </div>
         <% else %>
-          <%= render :partial => 'items/not_available', :locals => {:max_price => max_price} %>
+          <% if !@item.is_sold %>
+            <%= render :partial => 'items/available', :locals => {:max_price => max_price} %>
+          <% else %>
+            <%= render :partial => 'items/not_available', :locals => {:max_price => max_price} %>
+          <% end %>
         <% end %>
         <div class="otherinfo">
           <p class="clearfix">
@@ -50,10 +56,21 @@
         </div>
       </div>
     </div>
-    <div class="item-actions">
-      <%= link_to 'Edit', edit_item_path(@item), :class => 'btn' %>&nbsp;&nbsp;&nbsp;
-      <%= link_to 'Delete', item_path(@item), :confirm => "Are you sure?", :method => :delete, :class => 'btn btn-danger' %>
-    </div>
+    <% if not @item.is_deleted %>
+      <div class="item-actions">
+        <%= link_to 'Edit', edit_item_path(@item), :class => 'btn' %>&nbsp;&nbsp;&nbsp;
+        <% if @item.is_deleted %>
+        <% elsif @item.delete_request %>
+          <span href="#" class="cancel-bid">Your delete request is pending.</span>
+        <% else %>
+          <a href="#delete-item" class="cancel-req" data-toggle="modal">Request to delete listing</a>
+        <% end %>
+      </div>
+      <form method="post" action="<%= item_delete_item_path(@item) %>">
+        <input name="authenticity_token" value="<%=form_authenticity_token %>" type="hidden"> 
+        <input type="submit" value="[Test] Delete" class="btn btn-inverse">
+      </form>
+    <% end %>
     <div class="description">
       <h3>Description</h3>
       <div>
@@ -61,6 +78,36 @@
       </div>
     </div>
   </div>
+
+  <% if @item.is_deleted %>
+    <div class="deleted_overlay"></div>
+    <div class="deleted_overlay_text">
+      This item is deleted <br> because it violates Maccha's TOS.
+    </div>
+  <% end %>
+</div>
+
+<div id="delete-item" class="cancel-dlg modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Delete Item</h3>
+  </div>
+  <form method="post" action="<%= url_for :controller => "items", :action => "apply_to_delete",
+    :item_id => @item %>">
+    <input name="authenticity_token" value="<%=form_authenticity_token %>" type="hidden"> 
+    <div class="control-group">
+      <div class="controls">
+        <label for="delete-reason">Reason for deleting listing: </label>
+        <textarea id="delete-reason" name="delete_reason"></textarea>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <input type="submit" value="Submit" class="btn btn-inverse">
+        <a class="btn" data-dismiss="modal" aria-hidden="true">Cancel</a>
+      </div>
+    </div>
+  </form>
 </div>
 
 <% if not @bid_existing.nil? %>
