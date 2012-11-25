@@ -17,6 +17,7 @@ scheduler.cron '01 00 * * 1-7' do
   @bids.each do |bid|
     bid.status=2
     bid.save
+		NotifyMailer.win_auction(@bids.item,@bids.user).deliver
   end
 end
 
