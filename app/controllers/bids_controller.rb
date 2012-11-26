@@ -37,6 +37,7 @@ class BidsController < ApplicationController
     price = @item.bids.maximum(:price) || @item.price
     params[:bid][:price] = params[:bid][:price].to_f.round(2)
     if params[:bid][:price] < price
+
     else
       @bid = @item.bids.build(params[:bid])
     end
