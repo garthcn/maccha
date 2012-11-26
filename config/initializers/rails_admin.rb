@@ -1,3 +1,4 @@
+require Rails.root.join('lib', 'rails_admin_deactivate_user.rb')
 
 RailsAdmin.config do |config|
   #config.current_user_method do
@@ -14,4 +15,31 @@ RailsAdmin.config do |config|
       end
   end
   config.main_app_name { ['Recommended Games', 'Admin'] }
+
+  module RailsAdmin
+    module Config
+      module Actions
+        class DeactivateUser < Base
+          RailsAdmin::Config::Actions.register(self)
+        end
+      end
+    end
+  end
+
+  config.actions do
+    dashboard
+    index
+    new
+ 
+    show
+    edit
+    delete
+ 
+    deactivate_user do
+      visible do
+        bindings[:abstract_model].model.to_s == "User"
+      end 
+    end
+  end
+
 end

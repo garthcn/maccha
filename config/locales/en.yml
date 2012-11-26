@@ -3,3 +3,9 @@
 
 en:
   hello: "Hello world"
+
+en:
+  admin: 
+    actions:
+      deactivate_user:
+        bulk_link: "Deactivate User(s)"

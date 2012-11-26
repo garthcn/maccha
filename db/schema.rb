@@ -111,9 +111,9 @@ ActiveRecord::Schema.define(:version => 20121126165340) do
     t.string   "unconfirmed_email"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.integer  "request_to_leave"
     t.boolean  "cancel_request"
     t.text     "cancel_reason"
+    t.boolean  "deactivated"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
