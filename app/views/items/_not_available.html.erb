@@ -3,7 +3,7 @@
 </div>
 <% if current_user.id == @item.winner_id %>
   <% if @item.is_sold %>
-    <h4>You've already bought this item.</h4>
+    <h4>You've already bought this item. It will be shipped to your address.</h4>
   <% else %>
     <h4>You've won the auction. Click button below to checkout.</h4>
     <%= render 'items/buy_button' %>

@@ -15,4 +15,8 @@
 class Billing < ActiveRecord::Base
   attr_accessible :billing_addr, :credit_card, :paypal, :shipping_addr, :user_id
   belongs_to :user
+
+  def billing_valid?
+    !self.credit_card.blank?  && !self.shipping_addr.blank?  && !self.billing_addr.blank?
+  end
 end
