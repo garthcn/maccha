@@ -7,5 +7,7 @@ en:
 en:
   admin: 
     actions:
-      deactivate_user:
+      deactivate_users:
         bulk_link: "Deactivate User(s)"
+      deactivate_user:
+        menu: "Deactivate"

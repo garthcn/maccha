@@ -22,6 +22,9 @@ RailsAdmin.config do |config|
         class DeactivateUser < Base
           RailsAdmin::Config::Actions.register(self)
         end
+        class DeactivateUsers < Base
+          RailsAdmin::Config::Actions.register(self)
+        end
       end
     end
   end
@@ -36,6 +39,11 @@ RailsAdmin.config do |config|
     delete
  
     deactivate_user do
+      visible do
+        bindings[:abstract_model].model.to_s == "User"
+      end 
+    end
+    deactivate_users do
       visible do
         bindings[:abstract_model].model.to_s == "User"
       end 
