@@ -9,8 +9,8 @@
         </form>
       </div>
       <div class="user-actions">
-        <a class="action" href="<%= new_item_path %>">SELL</a>
         <% if user_signed_in? %>
+          <a class="action" href="<%= new_item_path %>">SELL</a>
           <div class="user-menu">
             <a href="#" class="dropdown-toggle action"><%= current_user.name %><span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -21,6 +21,7 @@
             </ul>
           </div>
         <% else %>
+          <%= link_to "SELL", new_user_session_path, :class => 'action' %>
           <%= link_to "Sign in", new_user_session_path, :class => 'action' %>
           <%= link_to "Sign up", new_user_registration_path, :class => 'action' %>
         <% end %>

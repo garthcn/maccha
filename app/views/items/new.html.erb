@@ -1,4 +1,14 @@
 <% provide :ftitle, "New Listing" %>
 <% provide :btn_text, "Create Listing" %>
-<%= render 'form' %>
+<%if user_signed_in?%>
+  <%if current_user.deactivated? %>
+    You can't sell because you have been deactivated!
+  <% else %>
+    <%= render 'form' %>
+  <%end%>
+
+<%else%>
+  You need to sign in
+  <%= link_to "Sign in", new_user_session_path, :class => 'action' %>
+<%end%>
 
