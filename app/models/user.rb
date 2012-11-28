@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation,
-									:remember_me, :name, :cancel_request, :cancel_reason
+									:remember_me, :name, :cancel_request, :cancel_reason, :deactivated
   # attr_accessible :title, :body
   
   validates_uniqueness_of :email, 
