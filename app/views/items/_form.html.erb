@@ -32,6 +32,7 @@
         <%= f.label :start_time, class: 'control-label' %>
         <div class='controls'>
           <%= f.text_field :start_time, :value => Date.today.to_s, :class => "datepicker" %>
+          <%= text_field_tag :start_hour, '', :class => "timepicker" %>
           <span class="help-inline"></span>
         </div>
       </div>
@@ -39,6 +40,7 @@
         <%= f.label :end_time, class: 'control-label' %>
         <div class='controls'>
           <%= f.text_field :end_time, :value => Date.tomorrow.to_s, :class => "datepicker" %>
+          <%= text_field_tag :end_hour, '', :class => "timepicker" %>
           <span class="help-inline"></span>
         </div>
       </div>

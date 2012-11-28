@@ -78,16 +78,16 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    #start_datetime = params[:item][:start_date] + ' ' +  params[:item][:start_time]
-    #params[:item][:start_time] = DateTime.parse(start_datetime)
-    #end_datetime = params[:item][:end_date] + ' ' + params[:item][:end_time]
-    #params[:item][:end_time] = DateTime.parse(end_datetime)
+    t_start = params[:item][:start_time].to_date.to_s + ' ' + params[:start_hour]
+    t_end = params[:item][:end_time].to_date.to_s + ' ' + params[:end_hour]
+    params[:item][:start_time] = DateTime.parse(t_start)
+    params[:item][:end_time] = DateTime.parse(t_end)
+    params[:item][:start_time] = params[:item][:start_time].change(:offset => "-5")
+    params[:item][:end_time] = params[:item][:end_time].change(:offset => "-5")
+    p '##########'
+    p params
 
-    #print "current_user #{params}}"
-    #print "current_user_id #{current_user.id}"
     @item =  Item.new(params[:item])
-
-
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
