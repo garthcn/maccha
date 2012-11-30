@@ -158,4 +158,15 @@ class UsersController < ApplicationController
       end
     end
   end
+
+
+  def check_id
+    u = User.find_by_email(params[:user_email])
+    if u
+      render :text => u.id
+    else
+      render :text => '-1'
+    end
+  end
+  
 end

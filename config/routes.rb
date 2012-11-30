@@ -15,6 +15,7 @@ BestBay::Application.routes.draw do
   match 'api/users/:id/transactions' => 'transactions#index'
   match 'api/users/:id/bids' => 'bids#index'
   match 'api/users/:id/watch_list' => 'watch_lists#index'
+  match 'api/users/check_id' => 'users#check_id'
 
 
   # match 'bids/:id/apply_to_cancel' => 'bids#apply_to_cancel'
