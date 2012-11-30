@@ -84,8 +84,6 @@ class ItemsController < ApplicationController
     params[:item][:end_time] = DateTime.parse(t_end)
     params[:item][:start_time] = params[:item][:start_time].change(:offset => "-5")
     params[:item][:end_time] = params[:item][:end_time].change(:offset => "-5")
-    p '##########'
-    p params
 
     @item =  Item.new(params[:item])
     respond_to do |format|
