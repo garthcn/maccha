@@ -21,6 +21,9 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  request_to_leave       :integer
+#  cancel_request         :boolean
+#  cancel_reason          :text
+#  deactivated            :boolean
 #
 
 require 'spec_helper'

@@ -18,6 +18,12 @@
 #  picture_content_type :string(255)
 #  picture_file_size    :integer
 #  picture_updated_at   :datetime
+#  is_expired           :boolean
+#  is_deleted           :boolean
+#  delete_request       :boolean
+#  delete_reason        :text
+#  winner_id            :integer
+#  is_sold              :boolean
 #
 
 class Item < ActiveRecord::Base
