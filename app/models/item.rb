@@ -82,4 +82,8 @@ class Item < ActiveRecord::Base
   def self.adv_search(search)
     # TODO: advanced search
   end
+
+  def picture_url
+    self.picture.url.to_s
+  end
 end

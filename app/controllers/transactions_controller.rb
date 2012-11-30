@@ -4,6 +4,11 @@ class TransactionsController < ApplicationController
     user = User.find_by_id(params[:id])
     @transactions = user.transactions
     
+    @transactions.each do |t|
+      item = Item.find_by_id(t.item_id)
+      t[:item] = item.to_xml
+      t[:picture_url] = item.picture.url.to_s
+    end
     respond_to do |format|
       format.xml { render :xml => @transactions.to_xml }
       format.json { render :json => @transactions.to_json }

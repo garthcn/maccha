@@ -16,9 +16,13 @@ class WatchListsController < ApplicationController
     #@items = results[0]
     @count = @items.size
 
+    #@items.each do |i|
+      #i[:picture_url] = i.picture.url.to_s
+    #end
+
     respond_to do |format|
       format.html
-      format.xml { render :xml => @items.to_xml }
+      format.xml { render :xml => @items.to_xml(:methods => :picture_url) }
     end
   end
 
