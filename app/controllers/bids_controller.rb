@@ -14,6 +14,7 @@ class BidsController < ApplicationController
       bid[:item] = item
       bid[:picture_url] = item.picture.url.to_s
       bid[:max_bid] = max_bid
+      bid[:my_bid_price] = bid[:price]
     end
 
     # Remove lower bids for the user
