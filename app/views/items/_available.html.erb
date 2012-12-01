@@ -44,7 +44,7 @@
             </span>
             <%= f.hidden_field :item_id,{:value => @item.id} %>
             <%= f.hidden_field :expired_at,{:value => @item.end_time} %>
-            <%= f.hidden_field :status,{:value =>1} %>
+            <%= f.hidden_field :status,{:value =>0} %>
             <%= f.hidden_field :seller_id, {:value => @item.seller_id} %>
             <%= f.hidden_field :buyer_id, {:value => current_user.id} %>
             <!--% if @bid.price > @item.price%  , :data => { :confirm => "Bid placed successfully!"}-->

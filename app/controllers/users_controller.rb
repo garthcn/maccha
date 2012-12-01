@@ -47,11 +47,12 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id]) || not_found
     @user_billing = @user.billing
 
-    @user_bids = @user.bids
+    @user_bids = []
+    @user_all_bids = @user.bids
     # Remove lower bids for the user
-    @user_bids = @user_bids.select do |b|
-      max_bid = b.item.bids.maximum(:price)
-      b.price == max_bid
+    @user_all_bids.group_by(&:item_id).select do |item_id, item_bids|
+      max_bid = item_bids.max_by { |x| x.price }
+      @user_bids << max_bid
     end
 
     @user_transactions = @user.transactions
