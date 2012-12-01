@@ -10,8 +10,10 @@ class BidsController < ApplicationController
     @bids = user.bids
     @bids.each do |bid|
       item = Item.find_by_id(bid.item_id)
+      max_bid = item.bids.maximum(:price)
       bid[:item] = item
       bid[:picture_url] = item.picture.url.to_s
+      bid[:max_bid] = max_bid
     end
     respond_to do |format|
       format.xml { render :xml => @bids.to_xml }

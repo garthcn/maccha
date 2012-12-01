@@ -86,4 +86,8 @@ class Item < ActiveRecord::Base
   def picture_url
     self.picture.url.to_s
   end
+
+  def expired?
+    Time.now > self.end_time ? true : false
+  end
 end

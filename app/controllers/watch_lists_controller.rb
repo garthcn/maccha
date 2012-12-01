@@ -16,9 +16,11 @@ class WatchListsController < ApplicationController
     #@items = results[0]
     @count = @items.size
 
-    #@items.each do |i|
-      #i[:picture_url] = i.picture.url.to_s
-    #end
+    @items.each do |i|
+      max_bid = i.bids.maximum(:price)
+      i[:picture_url] = i.picture.url.to_s
+      i[:max_bid] = max_bid
+    end
 
     respond_to do |format|
       format.html

@@ -27,7 +27,7 @@
             <h3>Item is deleted.</h3>
           </div>
         <% else %>
-          <% if !@item.is_expired %>
+          <% if !@item.expired? %>
             <%= render :partial => 'items/available', :locals => {:max_price => max_price} %>
           <% else %>
             <%= render :partial => 'items/not_available', :locals => {:max_price => max_price} %>

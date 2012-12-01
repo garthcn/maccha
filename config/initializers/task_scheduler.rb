@@ -36,7 +36,6 @@ scheduler.cron '01 00 * * 1-7' do
     
     item = Item.find_by_id(item_id)
     item.winner_id = max_bid.buyer_id 
-    item.is_expired = true
     item.save
 
     # Send winner email
