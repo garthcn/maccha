@@ -28,6 +28,15 @@ RailsAdmin.config do |config|
         class ReactivateUsers < Base
           RailsAdmin::Config::Actions.register(self)
         end
+        class RemoveItems < Base
+          RailsAdmin::Config::Actions.register(self)
+        end
+        class RemoveItem < Base
+          RailsAdmin::Config::Actions.register(self)
+        end
+        class AddItemsBack < Base
+          RailsAdmin::Config::Actions.register(self)
+        end
       end
     end
   end
@@ -41,6 +50,21 @@ RailsAdmin.config do |config|
     edit
     delete
  
+    remove_item do
+      visible do
+        bindings[:abstract_model].model.to_s == "Item"
+      end 
+    end
+    remove_items do
+      visible do
+        bindings[:abstract_model].model.to_s == "Item"
+      end 
+    end
+    add_items_back do
+      visible do
+        bindings[:abstract_model].model.to_s == "Item"
+      end 
+    end
     deactivate_user do
       visible do
         bindings[:abstract_model].model.to_s == "User"

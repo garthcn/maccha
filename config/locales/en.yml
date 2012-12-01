@@ -13,3 +13,9 @@ en:
         bulk_link: "Deactivate User(s)"
       deactivate_user:
         menu: "Deactivate"
+      remove_items:
+        bulk_link: "Remove Item(s)"
+      remove_item:
+        menu: "Remove"
+      add_items_back:
+        bulk_link: "Activate"

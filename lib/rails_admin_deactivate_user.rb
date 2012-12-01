@@ -10,6 +10,12 @@ module RailsAdminDeactivateUsers
 end
 module RailsAdminReactivateUsers
 end
+module RailsAdminRemoveItem
+end
+module RailsAdminRemoveItems
+end
+module RailsAdminAddItemsBack
+end
  
 module RailsAdmin
   module Config
@@ -116,6 +122,73 @@ module RailsAdmin
             else
               flash[:notice] = flash[:notice].html_safe
             end
+            redirect_to back_or_index
+          end
+        end
+      end
+
+      class RemoveItems < Base
+        # RailsAdmin::Config::Actions.register(self)
+
+        register_instance_option :bulkable? do
+          true
+        end
+
+        register_instance_option :controller do
+          Proc.new do
+            # Get all selected rows
+            @objects = list_entries(@model_config, :destroy)
+            @objects.each do |object|
+              object.update_attribute(:delete_request, false)
+              object.update_attribute(:is_deleted, true)
+            end
+            flash[:notice] = "Item(s) removed."
+            redirect_to back_or_index
+          end
+        end
+      end
+
+      class RemoveItem < Base
+        # RailsAdmin::Config::Actions.register(self)
+
+        # register_instance_option :visible? do
+        #   authorized? && !bindings[:object].approved
+        # end
+
+        register_instance_option :member do
+          true
+        end
+
+        register_instance_option :link_icon do
+          'icon-minus-sign'
+        end
+
+        register_instance_option :controller do
+          Proc.new do
+            @object.update_attribute(:delete_request, false)
+            @object.update_attribute(:is_deleted, true)
+            flash[:notice] = "Item removed."
+            redirect_to back_or_index
+          end
+        end
+      end
+
+      class AddItemsBack < Base
+        # RailsAdmin::Config::Actions.register(self)
+
+        register_instance_option :bulkable? do
+          true
+        end
+
+        register_instance_option :controller do
+          Proc.new do
+            # Get all selected rows
+            @objects = list_entries(@model_config, :destroy)
+            @objects.each do |object|
+              # object.update_attribute(:delete_request, false)
+              object.update_attribute(:is_deleted, false)
+            end
+            flash[:notice] = "Item(s) activated."
             redirect_to back_or_index
           end
         end
