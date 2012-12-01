@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_filter :user_is_buyer, :only => [:new]
 
   def user_is_buyer
-    if current_user.user_type.seller_type == 0
+    if current_user.user_type.nil? || current_user.user_type.seller_type == 0
       flash[:alert] = "Please upgrade to seller account so that you can sell."
       redirect_to plans_path
     end
