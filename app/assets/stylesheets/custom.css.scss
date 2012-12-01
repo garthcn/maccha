@@ -56,8 +56,12 @@ a:hover {
   margin: 0 auto;
 }
 .main-hd .user-actions {
-  width: 200px;
+  width: 250px;
   float: right;
+
+  .user-actions-right {
+    float: right;
+  }
 }
 .main-hd .user-menu {
   display: inline-block;

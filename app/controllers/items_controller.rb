@@ -1,6 +1,13 @@
 class ItemsController < ApplicationController
 
-  #before_filter :authenticate_user!, :except => [:index, :show, :search]
+  before_filter :user_is_buyer, :only => [:new]
+
+  def user_is_buyer
+    if current_user.user_type.seller_type == 0
+      flash[:alert] = "Please upgrade to seller account so that you can sell."
+      redirect_to plans_path
+    end
+  end
 
   # GET /items
   # GET /items.json

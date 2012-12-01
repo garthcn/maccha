@@ -9,21 +9,25 @@
         </form>
       </div>
       <div class="user-actions">
-        <% if user_signed_in? %>
-          <a class="action" href="<%= new_item_path %>">SELL</a>
-          <div class="user-menu">
-            <a href="#" class="dropdown-toggle action"><%= current_user.name %><span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a tabindex="-1" href="<%= profile_path %>">Account</a></li>
-              <li><a tabindex="-1" href="<%= watch_lists_path %>">Watchlist</a></li>
-              <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-            </ul>
-          </div>
-        <% else %>
-          <%= link_to "SELL", new_user_session_path, :class => 'action' %>
-          <%= link_to "Sign in", new_user_session_path, :class => 'action' %>
-          <%= link_to "Sign up", new_user_registration_path, :class => 'action' %>
-        <% end %>
+        <div class="user-actions-right">
+          <% if user_signed_in? %>
+            <a class="action" href="<%= items_path %>">BROWSE</a>
+            <a class="action" href="<%= new_item_path %>">SELL</a>
+            <div class="user-menu">
+              <a href="#" class="dropdown-toggle action"><%= current_user.name %><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="<%= profile_path %>">Account</a></li>
+                <li><a tabindex="-1" href="<%= watch_lists_path %>">Watchlist</a></li>
+                <li><a tabindex="-1" href="<%= plans_path %>">Plans</a></li>
+                <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+              </ul>
+            </div>
+          <% else %>
+            <%= link_to "SELL", new_user_session_path, :class => 'action' %>
+            <%= link_to "Sign in", new_user_session_path, :class => 'action' %>
+            <%= link_to "Sign up", new_user_registration_path, :class => 'action' %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
