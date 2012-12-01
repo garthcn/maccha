@@ -8,10 +8,33 @@ module RailsAdminDeactivateUser
 end
 module RailsAdminDeactivateUsers
 end
+module RailsAdminReactivateUsers
+end
  
 module RailsAdmin
   module Config
     module Actions
+      class ReactivateUsers < Base
+        # RailsAdmin::Config::Actions.register(self)
+
+        register_instance_option :bulkable? do
+          true
+        end
+
+        register_instance_option :controller do
+          Proc.new do
+            # Get all selected rows
+            @objects = list_entries(@model_config, :destroy)
+            @objects.each do |object|
+              # object.update_attribute(:cancel_request, false)
+              object.update_attribute(:deactivated, false)
+            end
+            flash[:notice] = "User(s) re-activated."
+            redirect_to back_or_index
+          end
+        end
+      end
+
       class DeactivateUsers < Base
         # RailsAdmin::Config::Actions.register(self)
 

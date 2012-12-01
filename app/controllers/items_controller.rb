@@ -22,6 +22,7 @@ class ItemsController < ApplicationController
   def show
     @transaction = Transaction.new
     @item = Item.find(params[:id])
+    @seller = User.find(@item.seller_id)
 
 		if user_signed_in?
 			#create new bid entry regardless of whether

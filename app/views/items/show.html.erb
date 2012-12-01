@@ -35,6 +35,12 @@
         <% end %>
         <div class="otherinfo">
           <p class="clearfix">
+            <span class="pull-left">Seller:</span>
+            <span class="pull-right"><%= @seller.name %>
+              <a class="contact" href="mailto:<%= @seller.email %>" title="Contact">Contact</a>
+            </span>
+          </p>
+          <p class="clearfix">
             <span class="pull-left">Condition:</span>
             <span class="pull-right"><%= @item.condition %></span>
           </p>
@@ -50,9 +56,6 @@
             <span class="pull-left">Payment:</span>
             <span class="pull-right"><img src="http://pics.ebaystatic.com/aw/pics/logos/logoPayPal_51x14.gif" alt="PayPal"></span>
           </p>
-        </div>
-        <div class="seller">
-          Seller info goes here...
         </div>
       </div>
     </div>
