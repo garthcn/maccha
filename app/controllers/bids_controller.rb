@@ -15,6 +15,12 @@ class BidsController < ApplicationController
       bid[:picture_url] = item.picture.url.to_s
       bid[:max_bid] = max_bid
     end
+
+    # Remove lower bids for the users
+    @bids = @bids.select do |bid|
+      bid.price == bid[:max_bid]
+    end
+
     respond_to do |format|
       format.xml { render :xml => @bids.to_xml }
       format.json { render :json => @bids.to_json }

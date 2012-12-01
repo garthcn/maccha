@@ -23,6 +23,7 @@ namespace :bid do
 
       item = Item.find_by_id(item_id)
       item.winner_id = max_bid.buyer_id 
+      item.is_expired = true
       item.save
 
       # Send winner email

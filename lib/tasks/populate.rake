@@ -6,6 +6,8 @@ namespace :db do
     require 'date'
     
     [Item].each(&:delete_all)
+    [Bid].each(&:delete_all)
+    [Transaction].each(&:delete_all)
     
     #Category.populate 20 do |category|
       #category.name = Populator.words(1..3).titleize

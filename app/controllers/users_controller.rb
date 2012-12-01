@@ -46,7 +46,14 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_id(params[:id]) || not_found
     @user_billing = @user.billing
+
     @user_bids = @user.bids
+    # Remove lower bids for the user
+    @user_bids = @user_bids.select do |b|
+      max_bid = b.item.bids.maximum(:price)
+      b.price == max_bid
+    end
+
     @user_transactions = @user.transactions
     @user_items_for_sale = @user.items_for_sale
 
