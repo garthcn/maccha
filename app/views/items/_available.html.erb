@@ -70,12 +70,14 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-  $("#jcountdown").setCountdown({
+  $("#jcountdown").countdown({
+    htmlTemplate: " %d <span class='cd-time'>D</span> %h <span class='cd-time'>H</span> %i <span class='cd-time'>M</span> %s <span class='cd-time'>S</span>",
+        
     //Date for the countdown
-    targetDate: "<%= @item.end_time.to_date %>",
+    date: "<%= @item.end_time.to_time.in_time_zone("Eastern Time (US & Canada)").strftime('%F %I:%M:%S %p') %>"
     //Labels for days/hours/minutes/seconds,
     //[ 'Days', 'Hours', 'Minutes', 'Seconds' ] by default
-    itemLabels: [ 'D', 'H', 'M', 'S' ]
+    //itemLabels: [ 'D', 'H', 'M', 'S' ]
   });
 });
 

@@ -301,7 +301,13 @@ div.watch-form-container {
 }
 
 div#jcountdown {
-  font-size: 40px;
+  margin: 10px;
+  font-size: 30px;
+  text-align: center;
+  
+  span.cd-time {
+    font-size: 10px;
+  }
 }
 
 div.last-bid {
