@@ -16,14 +16,17 @@ class BidsController < ApplicationController
       bid[:max_bid] = max_bid
     end
 
-    # Remove lower bids for the users
-    @bids = @bids.select do |bid|
-      bid.price == bid[:max_bid]
+    # Remove lower bids for the user
+    @user_all_bids = @bids
+    @unique_bids = []
+    @user_all_bids.group_by(&:item_id).select do |item_id, item_bids|
+      max_bid = item_bids.max_by { |x| x.price }
+      @unique_bids << max_bid
     end
 
     respond_to do |format|
-      format.xml { render :xml => @bids.to_xml }
-      format.json { render :json => @bids.to_json }
+      format.xml { render :xml => @unique_bids.to_xml }
+      format.json { render :json => @unique_bids.to_json }
     end
   end
 
