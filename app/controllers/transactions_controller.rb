@@ -16,7 +16,7 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    if !current_user.billing.billing_valid?
+    if !current_user.billing || !current_user.billing.billing_valid?
       flash[:alert] = 'Please complete your billing information first'
       redirect_to user_path(current_user)
     else
