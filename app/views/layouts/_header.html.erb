@@ -23,6 +23,7 @@
               </ul>
             </div>
           <% else %>
+            <a class="action" href="<%= items_path %>">BROWSE</a>
             <%= link_to "SELL", new_user_session_path, :class => 'action' %>
             <%= link_to "Sign in", new_user_session_path, :class => 'action' %>
             <%= link_to "Sign up", new_user_registration_path, :class => 'action' %>
