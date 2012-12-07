@@ -19,7 +19,7 @@
         <h4>Seller: <%= @seller_plan[:name] %></h4>
         <p class="price">$<strong><%= @seller_plan[:price] %></strong><em>/mo.</em></p>
         <ul class="capabilities">
-        <% @buyer_plan[:features].each do |f| %>
+        <% @seller_plan[:features].each do |f| %>
           <li><%= f %></li>
         <% end %>
         </ul>

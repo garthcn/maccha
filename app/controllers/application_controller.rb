@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   def seller_plans
     @seller_plans ||= [
       {name: "No Plan", price: 0,
-        features: ["1 week bids", "1 pictures for upload", "No ads"]},
+        features: ["Upgrade in order to sell"]},
       {name: "Maccha Bronze", price: 15,
         features: ["1 week bids", "2 pictures for upload", "No ads"]},
       {name: "Maccha Silver", price: 25,
