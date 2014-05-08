@@ -9,3 +9,4 @@ bid.status
 1 not end and lower than
 0  or null: not end
 
+testtest
